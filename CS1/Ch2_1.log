@@ -1,0 +1,69 @@
+Script started on 2023-09-12 11:32:05-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ pwd
+[?2004l/home/jovyan
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ ls[K[Kcd CLA
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ ls -l
+[?2004ltotal 24
+-rw-r--r-- 1 jovyan users  681 Sep  7 11:36 cla4.py
+-rw-r--r-- 1 jovyan users  609 Sep 12 11:24 Cookies.py
+-rw-r--r-- 1 jovyan users  371 Sep 12 11:30 Meal.py
+-rw-r--r-- 1 jovyan users 9392 Aug 31 11:45 paragraph.txt
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Cookies.py
+[?2004l     1	#CLA 5 Exercise 1
+     2	#Tyler Sabin
+     3	#Septemeber 12 2023
+     4	
+     5	#The regular recipe for 48 cookies
+     6	sugarInt = 1.5
+     7	butterInt = 1
+     8	flourInt = 2.75
+     9	
+    10	#The amount needed for 1 cookie
+    11	sugar1 = sugarInt / 48
+    12	butter1 = butterInt / 48
+    13	flour1 = flourInt / 48
+    14	
+    15	#Get the number of cookies the person wants
+    16	cookies = float(input("How many cookies do you want to make? "))
+    17	
+    18	#Calc the amount of 1 cookie times the amount wanted
+    19	sugarFinal = cookies * sugar1
+    20	butterFinal = cookies * butter1
+    21	flourFinal = cookies * flour1
+    22	
+    23	print(f'You need {sugarFinal:.2f} cups of sugar, {butterFinal:.2f} cups of butter, {flourFinal:.2f} cups of flour.')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Cookies.py
+[?2004lHow many cookies do you want to make? 240
+You need 7.50 cups of sugar, 5.00 cups of butter, 13.75 cups of flour.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Cookies.py
+[?2004lHow many cookies do you want to make? 48
+You need 1.50 cups of sugar, 1.00 cups of butter, 2.75 cups of flour.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Meal.py
+[?2004l     1	#CLA 5 Exercise 2
+     2	#Tyler Sabin
+     3	#Septemeber 12 2023
+     4	
+     5	salesTax = .07
+     6	tip = .18
+     7	
+     8	meal = float(input("Enter the charge for food: "))
+     9	
+    10	#Calc amount for the tip & tax
+    11	totalTax = meal * salesTax
+    12	totalTip = meal * tip
+    13	
+    14	#Calc total for the meal
+    15	mealTotal = meal + totalTax + totalTip
+    16	
+    17	print(f'Tip: ${totalTip:.2f}')
+    18	print(f'Tax: ${totalTax:.2f}')
+    19	print(f'Total: ${mealTotal:.2f}')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ pythin3.10 Meal.py
+[?2004lbash: pythin3.10: command not found
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Meal.py
+[?2004lEnter the charge for food: 67.5
+Tip: $12.15
+Tax: $4.73
+Total: $84.38
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-12 11:33:40-05:00 [COMMAND_EXIT_CODE="0"]
