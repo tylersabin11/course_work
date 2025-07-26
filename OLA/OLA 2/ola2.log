@@ -1,0 +1,131 @@
+Script started on 2023-09-26 15:21:55-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="97" LINES="58"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ pwd
+[?2004l/home/jovyan/OLA
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ ls [K
+[?2004lCh2_OLA.log  Ch2_OLA.pdf  OLA1.py  ola2.log  Tax.py
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ cat -n Tax.py
+[?2004l     1	filingStatus = int(input("Enter the filing status: "))
+     2	taxableIncome = int(input("Enter the taxable income: "))
+     3	
+     4	#Tax rates for each pay grade
+     5	tax1 = .1
+     6	tax2 = .15
+     7	tax3 = .25
+     8	tax4 = .28
+     9	tax5 = .33
+    10	tax6 = .35
+    11	
+    12	#Pay ranges for each bracket (Single filing)
+    13	sin1 = 8350
+    14	sin2low = 8350
+    15	sin2high = 33950
+    16	sin3low = 33950
+    17	sin3high = 85250
+    18	sin4low = 85250 
+    19	sin4high = 171550
+    20	sin5low = 171550
+    21	sin5high = 372950
+    22	sin6 = 372950
+    23	
+    24	#Pay ranges for each bracket (Married filing)
+    25	joint1 = 15700
+    26	joint2low = 15700
+    27	joint2high = 67900
+    28	joint3low = 67900
+    29	joint3high = 137050
+    30	joint4low = 137050
+    31	joint4high = 211850
+    32	joint5low = 211850
+    33	joint5high = 372950
+    34	joint6 = 372950
+    35	
+    36	#Check to see what the filing status is
+    37	if filingStatus == 0:
+    38	    #Check to see if the taxable income amount is above the single first range
+    39	    if taxableIncome > sin1:
+    40	        #If so, taxAm1 will represent the tax amount for the high-bound of the Single range (1st bracket) and multiply the tax rate to get the amount
+    41	        taxAm1 = sin1 * tax1 
+    42	        if taxableIncome > sin2high:
+    43	            #This calculation is done because the taxable income is higher then the high-bound of the second bracket. We will take the high-bound and subtract the low bound to find the amount to be taxed and multiply it by the tax rate
+    44	            taxAm2 = (sin2high - sin2low) * tax2
+    45	            if taxableIncome > sin3high:
+    46	                #The same process will occur all the way down when the taxable income is higher then the high-bound of each bracket
+    47	                taxAm3 = (sin3high - sin3low) * tax3
+    48	                if taxableIncome > sin4high:
+    49	                    taxAm4 = (sin4high - sin4low) * tax4
+    50	                    if taxableIncome > sin5high:
+    51	                        taxAm5 = (sin5high - sin5low) * tax5
+    52	                        if taxableIncome > sin6:
+    53	                            taxAm6 = (taxableIncome - sin6) * tax6
+    54	                            totalTaxes = tax6 + tax5 + tax4 + tax3 + tax2 + tax1
+    55	                            #This will output the total taxes
+    56	                            print(f'Tax is {totalTaxes:.2f}')
+    57	                    else: 
+    58	                        #(This process is for all lines below) Since we know that the taxable income is NOT above the high bound, we subtract the taxable income from the low bound of the given bracket to find the remainder. We then multiply this remainder by the tax rate to get the amount
+    59	                        taxAm5 = (taxableIncome - sin5low) * tax5
+    60	                        totalTaxes = tax5 + tax4 + tax3 + tax2 + tax1
+    61	                        #This will output the total taxes
+    62	                        print(f'Tax is {totalTaxes:.2f}')
+    63	                else:
+    64	                    taxAm4 = (taxableIncome - sin4low) * tax4
+    65	                    totalTaxes = taxAm4 + taxAm3 + taxAm2 + taxAm1
+    66	                    print(f'Tax is {totalTaxes:.2f}')
+    67	            else: 
+    68	                taxAm3 = (taxableIncome - sin3low) * tax3
+    69	                totalTaxes = taxAm3 + taxAm2 + taxAm1
+    70	                print(f'Tax is {totalTaxes:.2f}')
+    71	        else:
+    72	            taxAm2 = (taxableIncome - sin2low) * tax2
+    73	            totalTaxes = taxAm2 + taxAm1
+    74	            print(f'Tax is {totalTaxes:.2f}')
+    75	    else:
+    76	        taxAmount = taxableIncome * tax1
+    77	        print(f'Tax is {taxAmount:.2f}')
+    78	
+    79	#Since the filing status was not 0, taxes will be calculated at a joint filing status
+    80	#The same process will be followed by the pseudocode written above
+    81	else:
+    82	    if taxableIncome > joint1:
+    83	        taxAm1 = joint1 * tax1 
+    84	        if taxableIncome > joint2high:
+    85	            taxAm2 = (joint2high - joint2low) * tax2
+    86	            if taxableIncome > joint3high:
+    87	                taxAm3 = (joint3high - joint3low) * tax3
+    88	                if taxableIncome > joint4high:
+    89	                    taxAm4 = (joint4high - joint4low) * tax4
+    90	                    if taxableIncome > joint5high:
+    91	                        taxAm5 = (joint5high - joint5low) * tax5
+    92	                        if taxableIncome > joint6:
+    93	                            taxAm6 = (taxableIncome - joint6) * tax6
+    94	                            totalTaxes = tax6 + tax5 + tax4 + tax3 + tax2 + tax1
+    95	                            print(f'Tax is {totalTaxes:.2f}')
+    96	                    else: 
+    97	                        taxAm5 = (taxableIncome - joint5low) * tax5
+    98	                        totalTaxes = tax5 + tax4 + tax3 + tax2 + tax1
+    99	                        print(f'Tax is {totalTaxes:.2f}')
+   100	                else:
+   101	                    taxAm4 = (taxableIncome - joint4low) * tax4
+   102	                    totalTaxes = taxAm4 + taxAm3 + taxAm2 + taxAm1
+   103	                    print(f'Tax is {totalTaxes:.2f}')
+   104	            else: 
+   105	                taxAm3 = (taxableIncome - joint3low) * tax3
+   106	                totalTaxes = taxAm3 + taxAm2 + taxAm1
+   107	                print(f'Tax is {totalTaxes:.2f}')
+   108	        else:
+   109	            taxAm2 = (taxableIncome - joint2low) * tax2
+   110	            totalTaxes = taxAm2 + taxAm1
+   111	            print(f'Tax is {totalTaxes:.2f}')
+   112	    else:
+   113	        taxAmount = taxableIncome * tax1
+   114	        print(f'Tax is {taxAmount:.2f}')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ python3.10 Tax.py
+[?2004lEnter the filing status: 0
+Enter the taxable income: 100000
+Tax is 21630.00
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ python3.10 Tax.py
+[?2004lEnter the filing status: 1
+Enter the taxable income: 1375 052 1
+Tax is 26687.78
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-26 15:22:59-05:00 [COMMAND_EXIT_CODE="0"]
