@@ -1,0 +1,56 @@
+Script started on 2023-11-09 11:22:13-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="188" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Steps2.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#November 9, 2023
+     4	try:
+     5	    file = open('steps.txt','r')
+     6	except IOError:
+     7	        print("File had issues opening, or reading the file")
+     8	
+     9	def main():
+    10	    try:
+    11	        print(f'The average steps taken in January was {calc(file,31):.1f}')
+    12	        print(f'The average steps taken in February was {calc(file,28):.1f}')
+    13	        print(f'The average steps taken in March was {calc(file,31):.1f}')
+    14	        print(f'The average steps taken in April was {calc(file,30):.1f}')
+    15	        print(f'The average steps taken in May was {calc(file,31):.1f}')
+    16	        print(f'The average steps taken in June was {calc(file,30):.1f}')
+    17	        print(f'The average steps taken in July was {calc(file,31):.1f}')
+    18	        print(f'The average steps taken in August was {calc(file,31):.1f}')
+    19	        print(f'The average steps taken in September was {calc(file,30):.1f}')
+    20	        print(f'The average steps taken in October was {calc(file,31):.1f}')
+    21	        print(f'The average steps taken in November was {calc(file,30):.1f}')
+    22	        print(f'The average steps taken in December was {calc(file,31):.1f}')
+    23	    except ValueError:
+    24	        print("Issue occurred with the file's numeric contents")
+    25	        file.close()
+    26	
+    27	def calc(file,days):
+    28	    sum = 0
+    29	    count = 0
+    30	    for i in range(days):
+    31	        line = file.readline()
+    32	        steps = int(line)
+    33	        sum += steps
+    34	        count += 1
+    35	        average = (sum / count)
+    36	    return average
+    37	
+    38	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Steps2.py
+[?2004lThe average steps taken in January was 5246.1
+The average steps taken in February was 4851.9
+The average steps taken in March was 5777.6
+The average steps taken in April was 5802.1
+The average steps taken in May was 4711.5
+The average steps taken in June was 4792.3
+The average steps taken in July was 5638.2
+The average steps taken in August was 5759.6
+The average steps taken in September was 6114.6
+The average steps taken in October was 5411.0
+The average steps taken in November was 4268.8
+The average steps taken in December was 5138.1
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-11-09 11:22:31-06:00 [COMMAND_EXIT_CODE="0"]
