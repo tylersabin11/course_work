@@ -1,0 +1,46 @@
+Script started on 2023-10-24 11:34:28-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="103" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA/Ch5_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA/Ch5_2[00m$ cat -n Guess.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#October 24, 2023
+     4	
+     5	import random as rd
+     6	num1=1
+     7	num2=100
+     8	def main():
+     9	    num = random_int()
+    10	    guess = int(input("Enter a number between 1 and 100, or 0 to quit: "))
+    11	    while guess != 0:
+    12	        if guess > num:
+    13	            print("Too high, try again")
+    14	        elif guess < num:
+    15	            print("Too low, try again")
+    16	        else:
+    17	            print("Congratulations! You guessed the right number!")
+    18	        guess = int(input("Enter a number between 1 and 100, or 0 to quit: "))
+    19	        
+    20	        
+    21	def random_int():
+    22	    number = rd.randint(num1,num2)
+    23	    return number
+    24	
+    25	
+    26	main()
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA/Ch5_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA/Ch5_2[00m$ python3.10 Guess.py
+[?2004lEnter a number between 1 and 100, or 0 to quit: 40
+Too high, try again
+Enter a number between 1 and 100, or 0 to quit: 30
+Too high, try again
+Enter a number between 1 and 100, or 0 to quit: 20
+Too low, try again
+Enter a number between 1 and 100, or 0 to quit: 25
+Too low, try again
+Enter a number between 1 and 100, or 0 to quit: 27
+Too high, try again
+Enter a number between 1 and 100, or 0 to quit: 26
+Congratulations! You guessed the right number!
+Enter a number between 1 and 100, or 0 to quit: 0
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA/Ch5_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA/Ch5_2[00m$ exit
+[?2004lexit
+
+Script done on 2023-10-24 11:35:04-05:00 [COMMAND_EXIT_CODE="0"]
