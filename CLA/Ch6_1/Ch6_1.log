@@ -1,0 +1,39 @@
+Script started on 2023-10-31 11:13:58-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="233" LINES="77"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Average.py
+[?2004l     1	#Tyler Sabin
+     2	#October 31, 2023
+     3	#Section 006
+     4	#Was not in class due to being sick, but still read through and completed the lab
+     5	#If credit is not given, that is fine, but I wanted to at least attempt and submit the lab
+     6	
+     7	def main():
+     8	    numFile = open('numbers.txt','r')
+     9	
+    10	    #Read the lines within the file
+    11	    file_nums = numFile.readline()
+    12	
+    13	    #Set variables for the total of the nums, and the number of lines
+    14	    total = 0
+    15	    numLines = 0
+    16	
+    17	    #When the line is not blank, stay within the while loop to calculate the num of lines and total
+    18	    while file_nums != "":
+    19	        numLines += 1
+    20	        nums = int(file_nums)
+    21	        total += nums
+    22	        file_nums = numFile.readline()
+    23	    
+    24	    #Calculate the average and close the file
+    25	    averageNum = total / numLines
+    26	    numFile.close()
+    27	
+    28	    #Print out the average from the stored memory
+    29	    print(f'{averageNum:.2f}')
+    30	
+    31	#Call the main function
+    32	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Average.py
+[?2004l71.67
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-10-31 11:14:21-05:00 [COMMAND_EXIT_CODE="0"]
