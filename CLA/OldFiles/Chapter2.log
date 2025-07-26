@@ -1,0 +1,30 @@
+Script started on 2023-09-14 11:20:11-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Miles_per_Gallon.py
+[?2004l     1	#Tyler Sabin
+     2	#CSCI-1170-006
+     3	#September 14 2023
+     4	
+     5	milesDriven = int(input("Enter the miles drive: "))
+     6	gallonsUsed = int(input("Enter the gallons of fuel used: "))
+     7	
+     8	MPG = milesDriven / gallonsUsed
+     9	
+    10	print(f'You used {MPG:.2f} miles per gallon.')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Celsius_Fahrenheit.py
+[?2004l     1	#Tyler Sabin
+     2	#CSCI-1170-006
+     3	#September 14 2023
+     4	
+     5	celsius = int(input("Enter a Celsius temperature: "))
+     6	fheit = ((9/5)*celsius) + 32
+     7	
+     8	print(f'That is equal to {fheit:.2f} degrees Fahrenheit.')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Miles_per_Gallon.py
+[?2004lEnter the miles drive: 200
+Enter the gallons of fuel used: 28
+You used 7.14 miles per gallon.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Celsius_Fahrenheit.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ky
+[?2004lEnter a Celsius temperature: 24
+That is equal to 75.20 degrees Fahrenheit.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-14 11:21:30-05:00 [COMMAND_EXIT_CODE="0"]

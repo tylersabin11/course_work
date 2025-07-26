@@ -1,0 +1,64 @@
+Script started on 2023-09-21 11:13:55-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ pwd
+[?2004l/home/jovyan/CLA
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ ls -l
+[?2004ltotal 88
+-rw-r--r-- 1 jovyan users   190 Sep 14 11:18 Celsius_Fahrenheit.py
+-rw-r--r-- 1 jovyan users 16895 Sep 14 11:22 Ch2_2.pdf
+-rw-r--r-- 1 jovyan users  2404 Sep 19 11:13 Ch3_1.log
+-rw-r--r-- 1 jovyan users 16880 Sep 19 11:14 Ch3_1.pdf
+-rw-r--r-- 1 jovyan users     0 Sep 21 11:13 Ch3_2.log
+-rw-r--r-- 1 jovyan users  1815 Sep 14 11:21 Chapter2.log
+-rw-r--r-- 1 jovyan users   681 Sep  7 11:36 cla4.py
+-rw-r--r-- 1 jovyan users   609 Sep 12 11:24 Cookies.py
+-rw-r--r-- 1 jovyan users   771 Sep 21 11:12 Grades.py
+-rw-r--r-- 1 jovyan users   371 Sep 12 11:30 Meal.py
+-rw-r--r-- 1 jovyan users   241 Sep 14 11:14 Miles_per_Gallon.py
+-rw-r--r-- 1 jovyan users  9392 Aug 31 11:45 paragraph.txt
+-rw-r--r-- 1 jovyan users   631 Sep 19 11:12 Rectangle.py
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Grades.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#Septemeber 21st 2023
+     4	#This program will take an integer input and decide whether the input is valid, pass, fail, or good
+     5	
+     6	#Get the input grade from the user
+     7	grade = int(input("Enter a score (0 to 100):"))
+     8	
+     9	#Variables for pass & good grade
+    10	goodGrade = 73
+    11	passGrade = 60
+    12	
+    13	#Check to see if the value is less than 0, or more than 100
+    14	if grade < 0 or grade > 100:
+    15	    print(f'{grade} is an invalid number.')
+    16	    print("The number should be between 0 and 100 inclusive.")
+    17	#The number is valid, now it will check to see if it is within the good, pass, or fail category
+    18	else:
+    19	    if grade >= goodGrade:
+    20	          print(f'{grade} is Good.')
+    21	    elif grade >= passGrade:
+    22	          print(f'{grade} is Pass.')
+    23	    else:
+    24	          print(f'{grade} is Fail')
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Grades.py
+[?2004lEnter a score (0 to 100):70
+70 is Pass.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Grades.py
+[?2004lEnter a score (0 to 100):-20
+-20 is an invalid number.
+The number should be between 0 and 100 inclusive.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Grades.py
+[?2004lEnter a score (0 to 100):100
+100 is Good.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Grades.py
+[?2004lEnter a score (0 to 100):130
+130 is an invalid number.
+The number should be between 0 and 100 inclusive.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Grades.py
+[?2004lEnter a score (0 to 100):30
+30 is Fail
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-21 11:15:54-05:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,54 @@
+Script started on 2023-10-12 11:22:12-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+c[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n FallingS[KDistance.py
+[?2004l     1	#Tyler Sabin
+     2	#October 12, 2023
+     3	#Section 006
+     4	
+     5	def falling_distance(secs):
+     6	    g = 9.8
+     7	    distance = (1/2) * (g * (secs ** 2))
+     8	    return distance
+     9	print('Time','Falling Distance',sep='\t')
+    10	print('----------------------------')
+    11	
+    12	def main():
+    13	    for num in range(1,11):
+    14	        total = falling_distance(num)
+    15	        print(f'{num:<10}{total:>5.2f}')
+    16	
+    17	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 FallingDistance.py
+[?2004lTime	Falling Distance
+----------------------------
+1          4.90
+2         19.60
+3         44.10
+4         78.40
+5         122.50
+6         176.40
+7         240.10
+8         313.60
+9         396.90
+10        490.00
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n KineticEnergy.py
+[?2004l     1	#Tyler Sabin
+     2	#October 12, 2023
+     3	#Section 006
+     4	
+     5	def kinetic_energy(mass,velocity):
+     6	    ke = (1/2) * (mass * (velocity ** 2))
+     7	    return ke
+     8	
+     9	def main():
+    10	    m = int(input("Enter the mass of the object in kilograms: "))
+    11	    v = int(input("Enter the object velocity in meters per second: "))
+    12	    joules = kinetic_energy(m,v)
+    13	    print(f'Kinetic Energy is: {joules:.2f} joules')
+    14	
+    15	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 KineticEnergy.py
+[?2004lEnter the mass of the object in kilograms: 35
+Enter the object velocity in meters per second: 125
+Kinetic Energy is: 273437.50 joules
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-10-12 11:23:10-05:00 [COMMAND_EXIT_CODE="0"]
