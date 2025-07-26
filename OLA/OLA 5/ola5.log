@@ -1,0 +1,80 @@
+Script started on 2023-11-10 16:01:03-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="201" LINES="46"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ cat -n ola5.py
+[?2004l     1	#Tyler Sabin
+     2	#CSCI 1170 Section 006
+     3	#Due date: 11/14/2023
+     4	#OLA 5, Nov. 10, 2023
+     5	#This program takes an input file name from the user, validates it, and will calc the average and output a .csv file 
+     6	#With the names, averages, total number of students, and number of pass/fail
+     7	
+     8	def main():
+     9	    try:
+    10	        fileName = input("Please enter the scores filename: ")
+    11	        print(f'You entered {fileName}')
+    12	        avgFile = open(fileName,'r')
+    13	        print(f'Opened scores file {fileName}')
+    14	    except IOError:
+    15	        print('File failed to open.')
+    16	
+    17	    tempFileCSV = 'averages.csv'
+    18	    tempFile = open(tempFileCSV,'w')
+    19	
+    20	    passNum = 0
+    21	    failNum = 0
+    22	    totalNum = 0
+    23	
+    24	    #This while loop will itterate through the file until it reaches ' '
+    25	    #It will read each name, and scores for each name, then convert the score to a float
+    26	    #The name & average will be written to the Temp file
+    27	    
+    28	    name = avgFile.readline()
+    29	    while name != '':
+    30	        score1 = float(avgFile.readline())
+    31	        score2 = float(avgFile.readline())
+    32	        score3 = float(avgFile.readline())
+    33	        score4 = float(avgFile.readline())
+    34	        average = (score1 + score2 + score3 + score4) / 4
+    35	        name = name.rstrip('\n')
+    36	        print(f'{name} scores: {score1:.2f} {score2:.2f} {score3:.2f} {score4:.2f} average: {average:.2f}')
+    37	        average = str(average)
+    38	        tempFile.write(f'{name} , {average}' + '\n')
+    39	        average = float(average)
+    40	        if average > 60:
+    41	            passNum += 1
+    42	        else:
+    43	            failNum += 1
+    44	        totalNum += 1
+    45	        name = avgFile.readline()
+    46	    
+    47	    avgFile.close()
+    48	
+    49	    passNum = str(passNum)
+    50	    failNum = str(failNum)
+    51	    totalNum = str(totalNum)
+    52	
+    53	    tempFile.write(f'Total number: {totalNum}' + '\n')
+    54	    tempFile.write(f'Passed: {passNum}' + '\n')
+    55	    tempFile.write(f'Failed: {failNum}' + '\n')
+    56	
+    57	    tempFile.close()
+    58	
+    59	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ python3.10 OL[K[Kola5.py
+[?2004lPlease enter the scores filename: Student.txt
+You entered Student.txt
+Opened scores file Student.txt
+Mary scores: 76.00 89.00 82.00 100.00 average: 86.75
+Joey scores: 91.00 81.00 83.00 95.00 average: 87.50
+Sally scores: 92.00 93.00 90.00 97.00 average: 93.00
+Jh scores: 76.00 89.00 82.00 100.00 average: 86.75
+Joey scores: 91.00 81.00 83.00 95.00 average: 87.50
+Sam scores: 92.00 93.00 90.00 97.00 average: 93.00
+Mark scores: 76.00 89.00 82.00 100.00 average: 86.75
+Jade scores: 91.00 61.00 73.00 95.00 average: 80.00
+Suny scores: 62.00 44.00 60.00 35.00 average: 50.25
+Jhon scores: 76.00 79.00 62.00 100.00 average: 79.25
+Jermy scores: 91.00 71.00 83.00 91.00 average: 84.00
+Bam scores: 92.00 91.00 95.00 97.00 average: 93.75
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-11-10 16:01:29-06:00 [COMMAND_EXIT_CODE="0"]
