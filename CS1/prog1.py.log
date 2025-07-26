@@ -1,0 +1,12 @@
+Script started on 2023-09-05 11:18:31-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ cd
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ python [K3.10 prog1.py
+[?2004lHello World!
+Hello World!
+Hello World!
+Hello World!
+Hello World!
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-05 11:18:56-05:00 [COMMAND_EXIT_CODE="0"]
