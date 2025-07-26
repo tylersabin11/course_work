@@ -1,0 +1,66 @@
+Script started on 2023-10-10 10:58:50-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="143" LINES="46"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ [K(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ [K(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ [K(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n pytha gorean.py
+[?2004l     1	#Tyler Sabin
+     2	#October 10, 2023
+     3	#Section 006
+     4	#CLA4_5
+     5	#This program will print all triples up to a hypo. of 30. It will also ensure that there are no duplicates
+     6	
+     7	hyp = 2
+     8	hypMax = 30
+     9	side1 = 1
+    10	side2 = 1
+    11	hyp2 = 1
+    12	
+    13	print('Hyp','Side 1','Side 2',sep='\t')
+    14	
+    15	for hyp in range(2,hypMax):
+    16	    for side1 in range(1,hypMax):
+    17	        for side2 in range(1,hypMax):
+    18	            if ((side1 ** 2) + (side2 ** 2)) == (hyp ** 2) and side1 < side2:
+    19	                    print(hyp,side1,side2,sep='\t')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 p ythagorean.py
+[?2004lHyp	Side 1	Side 2
+5	3	4
+10	6	8
+13	5	12
+15	9	12
+17	8	15
+20	12	16
+25	7	24
+25	15	20
+26	10	24
+29	20	21
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n facto rial.py
+[?2004l     1	#Tyler Sabin
+     2	#October 10, 2023
+     3	#Section 006
+     4	#CLA4_5
+     5	#This program will take an int input and print the num's factorial with a for & while loop
+     6	
+     7	num = int(input("Enter a non-negative integer: "))
+     8	total = 1
+     9	total2 = 1
+    10	
+    11	for i in range(1,num+1):
+    12	    total *= i
+    13	    
+    14	print(f'The factorial value using for loop is equal {total}')
+    15	
+    16	while num > 0:
+    17	    total2 *= num
+    18	    num -= 1
+    19	    
+    20	print(f'Factorial value using while loop is equal {total2}')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 f actorial.py
+[?2004lEnter a non-negative integer: 12
+The factorial value using for loop is equal 479001600
+Factorial value using while loop is equal 479001600
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ factorial.py [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ky
+[?2004lbash: factorial.py: command not found
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 f actorial.py
+[?2004lEnter a non-negative integer: 9
+The factorial value using for loop is equal 362880
+Factorial value using while loop is equal 362880
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-10-10 11:00:38-05:00 [COMMAND_EXIT_CODE="0"]

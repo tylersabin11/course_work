@@ -1,0 +1,70 @@
+Script started on 2023-09-26 11:30:45-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Roman.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#Septemeber 26th 2023
+     4	#This program will take an int input and convert it to a Roman Numeral
+     5	
+     6	#Get the input for the num
+     7	num = int(input("Enter an integer from 1 -10: "))
+     8	
+     9	#check to see if the num is out of the valid range
+    10	if num < 0 or num > 10:
+    11	    print("Error: Invalid Number")
+    12	#if the num is valid, iterate through the if's to find the correct Roman numeral
+    13	else:
+    14	    if num == 1:
+    15	        print("I")
+    16	    elif num == 2:
+    17	        print("II")
+    18	    elif num == 3:
+    19	        print("III")
+    20	    elif num == 4:
+    21	        print("IV")
+    22	    elif num == 5:
+    23	        print("V")
+    24	    elif num == 6:
+    25	        print("VI")
+    26	    elif num == 7:
+    27	        print("VII")
+    28	    elif num == 8:
+    29	        print("VIII")
+    30	    elif num == 9:
+    31	        print("IX")
+    32	    else:
+    33	        print("X")[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Roman.py
+[?2004lEnter an integer from 1 -10: 12 5
+Error: Invalid Number
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Roman.py
+[?2004lEnter an integer from 1 -10: 4
+IV
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Body_mass.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#Septemeber 26th 2023
+     4	#This program will calculate the person's BMI based off of their weight and height
+     5	
+     6	#Get the input for height and weight
+     7	weight = int(input("Enter your weight in pounds: "))
+     8	height = int(input("Enter your height in inches: "))
+     9	
+    10	#Calc the BMI
+    11	BMI = ( weight * 703 ) / (height ** 2 )
+    12	
+    13	#Iterate through the if's to see where the person's BMI is
+    14	if BMI > 25:
+    15	    print(f'Your Body Mass Indicator is {BMI:.2f}')
+    16	    print("You are overweight.")
+    17	elif BMI >= 18.5 and BMI <= 25:
+    18	    print(f'Your Body Mass Indicator is {BMI:.2f}')
+    19	    print("Your weight is optimal.")
+    20	else:
+    21	    print(f'Your Body Mass Indicator is {BMI:.2f}')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Body_mass.py
+[?2004lEnter your weight in pounds: 205
+Enter your height in inches: 63
+Your Body Mass Indicator is 36.31
+You are overweight.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-26 11:32:26-05:00 [COMMAND_EXIT_CODE="0"]

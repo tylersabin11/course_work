@@ -1,0 +1,56 @@
+Script started on 2023-09-19 11:12:40-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ pwd
+[?2004l/home/jovyan/CLA
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ ls -1
+[?2004lCelsius_Fahrenheit.py
+Ch2_2.pdf
+Ch3_1.log
+Chapter2.log
+cla4.py
+Cookies.py
+Meal.py
+Miles_per_Gallon.py
+paragraph.txt
+Rectangle.py
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n Rectangle.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#September 19 2023
+     4	
+     5	#Get the input for rec1
+     6	len1 = float(input("Enter length of rectangle1: "))
+     7	width1 = float(input("Enter width of rectangle1: "))
+     8	rec1 = len1 * width1
+     9	
+    10	#Get the input for rec2
+    11	len2 = float(input("Enter length of rectangle2: "))
+    12	width2 = float(input("Enter width of rectangle2: "))
+    13	rec2 = len2 * width2
+    14	
+    15	#Print the areas
+    16	print(f'Area of rectangle1 is {rec1:.2f}')
+    17	print(f'Area of rectangle2 is {rec2:.2f}')
+    18	
+    19	if rec1 > rec2:
+    20	    print("Area of rectangle1 is greater than area of rectangle2.")
+    21	else:
+    22	    print("Area of rectangle1 could either be less than or equal to area of rectangle2.")[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 Rectangle.py
+[?2004lEnter length of rectangle1: 40
+Enter width of rectangle1: 20
+Enter length of rectangle2: 20
+Enter width of rectangle2: 10
+Area of rectangle1 is 800.00
+Area of rectangle2 is 200.00
+Area of rectangle1 is greater than area of rectangle2.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3.10 p[KRectangle.py
+[?2004lEnter length of rectangle1: 20
+Enter width of rectangle1: 10
+Enter length of rectangle2: 40
+Enter width of rectangle2: 20
+Area of rectangle1 is 200.00
+Area of rectangle2 is 800.00
+Area of rectangle1 could either be less than or equal to area of rectangle2.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-19 11:13:47-05:00 [COMMAND_EXIT_CODE="0"]

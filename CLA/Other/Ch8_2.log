@@ -1,0 +1,23 @@
+Script started on 2023-11-28 11:30:55-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="103" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ cat -n pigLatin.py
+[?2004l     1	#Tyler Sabin 
+     2	#Section 006
+     3	#Nov 28, 2023
+     4	
+     5	def main():
+     6	    engSent = input("Enter a sentence: ")
+     7	    list = engSent.split(' ')
+     8	    pigLatin = ''
+     9	    for index in range(len(list)):
+    10	        tempList = list[index]
+    11	        pigLatin += tempList[1:] + tempList[0] + 'AY' + ' '
+    12	
+    13	    print(pigLatin)
+    14	    
+    15	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ python3 pigLatin.py
+[?2004lEnter a sentence: HELLO THIS IS A TEST FOR PIG LATIN
+ELLOHAY HISTAY SIAY AAY ESTTAY ORFAY IGPAY ATINLAY 
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-11-28 11:31:32-06:00 [COMMAND_EXIT_CODE="0"]
