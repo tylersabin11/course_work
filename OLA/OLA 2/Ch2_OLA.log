@@ -1,0 +1,43 @@
+Script started on 2023-09-14 21:18:55-05:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="371" LINES="78"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ pwd
+[?2004l/home/jovyan/OLA
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ ls -l
+[?2004ltotal 4
+-rw-r--r-- 1 jovyan users    0 Sep 14 21:18 Ch2_OLA.log
+-rw-r--r-- 1 jovyan users 1098 Sep 14 21:13 OLA1.py
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ catr[K -n OLA1.py
+[?2004l     1	#Tyler Sabin
+     2	#CSCI 1170-006
+     3	#OLA-1
+     4	#This program will inform the user of the ending dollar amount
+     5	#based off of their initial payment, rate, times compounded,
+     6	#and length of investment
+     7	
+     8	#def is used to define a function, main
+     9	def main():
+    10	    #Get the input for each of the requested items for the formula 
+    11	    principal = int(input("Enter the starting principal: "))
+    12	    interestRate = float(input("Enter the annual interest rate: "))
+    13	    interestCompound = int(input("How many times per year is the interest compunded? "))
+    14	    investmentLength = int(input("For how many years will the account ear interest? "))
+    15	
+    16	    #Convert the the integer input into a decimal form to accurately represent the rate
+    17	    apr = (interestRate / 100)
+    18	
+    19	    #Use the given formula to calculate the ending amount for the user
+    20	    endingAmount = (principal) * ((1 + (apr / interestCompound)) ** (interestCompound * investmentLength))
+    21	
+    22	    #Output the requested information for the user to show for the ending amount
+    23	    print(f'At the end of 10 years, you will have $ {endingAmount:,.2f}')
+    24	
+    25	#call the main function
+    26	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ python3.10 OLA1.py
+[?2004lEnter the starting principal: 5000
+Enter the annual interest rate: 3
+How many times per year is the interest compunded? 4
+For how many years will the account ear interest? 10
+At the end of 10 years, you will have $ 6,741.74
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-14 21:19:41-05:00 [COMMAND_EXIT_CODE="0"]

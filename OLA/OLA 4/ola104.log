@@ -1,0 +1,121 @@
+Script started on 2023-10-28 16:02:10-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="233" LINES="77"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ ls
+[?2004l game.py  [0m[01;34m'OLA 1'[0m   ola104.log  [01;34m'OLA 2'[0m  [01;34m'OLA 3'[0m  [01;34m'OLA 4'[0m
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ cat -n game.py
+[?2004l     1	#Tyler Sabin
+     2	#October 28, 2023
+     3	#Section 006
+     4	#This program will allow a user to play multiple R/P/S with a computer until the user no longer wishes to play
+     5	
+     6	import random as rn
+     7	
+     8	def main():
+     9	    print(intro(), "\n\n")
+    10	    play_game()
+    11	    print(keep_going())
+    12	
+    13	#Give a brief intro of the game
+    14	def intro():
+    15	    return 'You will play Rock, Paper, Scissors with the Computer'
+    16	
+    17	#Generate a random number for the cpu's choice
+    18	def get_comp_choice():
+    19	    choiceCMP = rn.randint(1,3)
+    20	    return choiceCMP
+    21	
+    22	#ask the user to input a choice, will require to enter another choice until the requirements are met
+    23	def get_user_choice():
+    24	    choiceUser = (input("rock, paper, or scissors? "))
+    25	    while choiceUser != "rock" and choiceUser != "paper" and choiceUser != "scissors":
+    26	        print("Invalid input")
+    27	        choiceUser = input("rock, paper, or scissors?")
+    28	    return choiceUser
+    29	
+    30	#Accept a string input and convert it to an int
+    31	def choice_to_num(choice):
+    32	    if choice == "rock":
+    33	        return 1
+    34	    elif choice == "paper":
+    35	        return 2
+    36	    else:
+    37	        return 3
+    38	
+    39	#Accept an int input and convert it to a string
+    40	def num_to_choice(num):
+    41	    if num == 1:
+    42	        return 'rock'
+    43	    elif num == 2:
+    44	        return 'paper'
+    45	    else:
+    46	        return 'scissors'
+    47	
+    48	#Display the choices using the num_to_choice function
+    49	def display_choices(choices_int):
+    50	    choicesInt = num_to_choice(choices_int)
+    51	    return choicesInt
+    52	
+    53	#Determine who won the game User/CPU
+    54	def who_won(computer,user):
+    55	    if computer == 1 and user == 2 or computer == 2 and user == 3 or user == 1 and computer == 3:
+    56	        return 'You won'
+    57	    elif computer == 1 and user == 3 or computer == 3 and user == 2 or user == 1 and computer == 2:
+    58	        return 'I won'
+    59	    else:
+    60	        return 'It\'s a tie'
+    61	
+    62	#Call all functions to have the game properly function in logical order
+    63	def play_game():
+    64	    userChoiceStr = get_user_choice()
+    65	    userInt = choice_to_num(userChoiceStr)
+    66	    computerChoiceInt = get_comp_choice()
+    67	    print('I chose', display_choices(computerChoiceInt))
+    68	    print('You chose', display_choices(userInt))
+    69	    print(who_won(computerChoiceInt, userInt), "\n\n")
+    70	
+    71	#Determine if the user would like to continue playing or not
+    72	def keep_going():
+    73	    answer = input("Do you want to play another game? y/n ")
+    74	    while answer != 'n':
+    75	        play_game()
+    76	        answer = input("Do you want to play another game? y/n ")
+    77	    return 'Good bye'
+    78	    
+    79	main()[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ python3.[K.10 game.py
+[?2004lYou will play Rock, Paper, Scissors with the Computer 
+
+
+rock, paper, or scissors? rock
+I chose paper
+You chose rock
+I won 
+
+
+Do you want to play another game? y/n y
+rock, paper, or scissors? paper
+I chose scissors
+You chose paper
+I won 
+
+
+Do you want to play another game? y/n y
+rock, paper, or scissors? scissors
+I chose rock
+You chose scissors
+I won 
+
+
+Do you want to play another game? y/n y
+rock, paper, or scissors? sfdas
+Invalid input
+rock, paper, or scissors?rock
+I chose paper
+You chose rock
+I won 
+
+
+Do you want to play another game? y/n n
+Good bye
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-10-28 16:03:31-05:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,176 @@
+Script started on 2023-09-30 17:12:54-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="263" LINES="56"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ pwd
+[?2004l/home/jovyan/OLA
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ ls
+[?2004lCh2_OLA.log  Ch2_OLA.pdf  OLA1.py  ola2.log  ola2.pdf  ola3.log  ola3.py  Tax.py
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ cat -n ola3.py
+[?2004l     1	#Tyler Sabin
+     2	#Section 006
+     3	#September 30, 2023
+     4	#This program will take an input of amount of students, names, and grades to calculate each student's Grade as a letter, and print out high/low grades of the class and the class average
+     5	#The purpose of this assignment is to have us students become comfortable working with while loops and more complex algorithms
+     6	
+     7	#Get the input for the amount of students
+     8	studentCount = int(input("Enter the number of students in the class: "))
+     9	#Intialize the variables so we can store certain values (low/high names and scores, amount failed, and total grades combined so we can calculate the avg
+    10	highestGradeName = ""
+    11	highestGrade = 0
+    12	lowestGradeName = ""
+    13	lowestGrade = 100
+    14	failedGrade = 0
+    15	gradeSum = 0
+    16	
+    17	#Intialize the count for our while loop
+    18	count = 1
+    19	
+    20	#Our while loop will continue until our count is no longer less than, or equal to the number of students
+    21	
+    22	while count <= studentCount:
+    23	    studentName = input("Enter student name: ")
+    24	    studentGrade = int(input("Enter student score (0-100): "))
+    25	    
+    26	    #This if statement will check to see if the grade entered is between the range given, if so, it will assign the correct grade in the print statement
+    27	    
+    28	    if studentGrade >= 90 and studentGrade <= 100:
+    29	        print(f'Grade for {studentName}: A')
+    30	        
+    31	        #This if statement will check to see if the grade entered is higher than the highest score stored
+    32	        
+    33	        if studentGrade > highestGrade:
+    34	            
+    35	            #If so, the students name will be be stored along with their grade in the assigned variables initialized at the beggining of our program
+    36	            
+    37	            highestGrade = studentGrade
+    38	            highestGradeName = studentName
+    39	            gradeSum += studentGrade
+    40	            count += 1
+    41	        else:
+    42	            
+    43	            #If the grade is not higher, it will check to see if it is lower than the lowest score and apply the same steps as above
+    44	            
+    45	            if studentGrade < lowestGrade:
+    46	                lowestGrade = studentGrade
+    47	                lowestGradeName = studentName
+    48	                gradeSum += studentGrade
+    49	                count += 1
+    50	            else:
+    51	                
+    52	                #If the grade is not higher, nor lower, it will add the grade to the grade sum, and add 1 to our count
+    53	                
+    54	                gradeSum += studentGrade
+    55	                count += 1
+    56	    else:
+    57	        
+    58	        #We will continue to iterate through the rest of the if's and else's until the proper section correlates with the student's grade
+    59	        
+    60	        if studentGrade >= 80 and studentGrade < 90:
+    61	            print(f'Grade for {studentName}: B')
+    62	            if studentGrade > highestGrade:
+    63	                highestGrade = studentGrade
+    64	                highestGradeName = studentName
+    65	                gradeSum += studentGrade
+    66	                count += 1
+    67	            else:
+    68	                if studentGrade < lowestGrade:
+    69	                    lowestGrade = studentGrade
+    70	                    lowestGradeName = studentName
+    71	                    gradeSum += studentGrade
+    72	                    count += 1
+    73	                else:
+    74	                    gradeSum += studentGrade
+    75	                    count += 1
+    76	        else:
+    77	            if studentGrade >= 70 and studentGrade < 80:
+    78	                print(f'Grade for {studentName}: C')
+    79	                if studentGrade > highestGrade:
+    80	                    highestGrade = studentGrade
+    81	                    highestGradeName = studentName
+    82	                    gradeSum += studentGrade
+    83	                    count += 1
+    84	                else:
+    85	                    if studentGrade < lowestGrade:
+    86	                        lowestGrade = studentGrade
+    87	                        lowestGradeName = studentName
+    88	                        gradeSum += studentGrade
+    89	                        count += 1
+    90	                    else:
+    91	                        gradeSum += studentGrade
+    92	                        count += 1
+    93	            else: 
+    94	                if studentGrade >= 60 and studentGrade < 70:
+    95	                    print(f'Grade for {studentName}: D')
+    96	                    if studentGrade > highestGrade:
+    97	                        highestGrade = studentGrade
+    98	                        highestGradeName = studentName
+    99	                        gradeSum += studentGrade
+   100	                        count += 1
+   101	                    else:
+   102	                        if studentGrade < lowestGrade:
+   103	                            lowestGrade = studentGrade
+   104	                            lowestGradeName = studentName
+   105	                            gradeSum += studentGrade
+   106	                            count += 1
+   107	                        else:
+   108	                            gradeSum += studentGrade
+   109	                            count += 1
+   110	                else:
+   111	                    
+   112	                    #Here, we now know that the student's grade must be an F, we will still check to see if the student has the highest or lowest grade because it is possible that all students have F's
+   113	                    
+   114	                    print(f'Grade for {studentName}: F')
+   115	                    if studentGrade > highestGrade:
+   116	                        highestGrade = studentGrade
+   117	                        highestGradeName = studentName
+   118	                        failedGrade += 1
+   119	                        gradeSum += studentGrade
+   120	                        count += 1
+   121	                    else:
+   122	                        if studentGrade < lowestGrade:
+   123	                            lowestGrade = studentGrade
+   124	                            lowestGradeName = studentName
+   125	                            failedGrade += 1
+   126	                            gradeSum += studentGrade
+   127	                            count += 1
+   128	                        else:
+   129	                            
+   130	                            #if the student does not have the highest grade or lowest grade, we must add one to our failed student counter
+   131	                            
+   132	                            failedGrade += 1
+   133	                            gradeSum += studentGrade
+   134	                            count += 1
+   135	
+   136	
+   137	#Calculate the average
+   138	
+   139	classAvg = (gradeSum / studentCount)
+   140	
+   141	#Print the stats out
+   142	
+   143	print("\nClass Statistics:")
+   144	print(f'Class Average: {classAvg:.2f}')
+   145	print(f'Highest Score: {highestGradeName} ({highestGrade})')
+   146	print(f'Lowest Score: {lowestGradeName} ({lowestGrade})')
+   147	print(f'Number of Students Who Failed: {failedGrade}')[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ python3.10 ola3.py
+[?2004lEnter the number of students in the class: 4
+Enter student name: Sam
+Enter student score (0-100): 88
+Grade for Sam: B
+Enter student name: Tim
+Enter student score (0-100): 77
+Grade for Tim: C
+Enter student name: Al
+Enter student score (0-100): 99
+Grade for Al: A
+Enter student name: Ali
+Enter student score (0-100): 55
+Grade for Ali: F
+
+Class Statistics:
+Class Average: 79.75
+Highest Score: Al (99)
+Lowest Score: Ali (55)
+Number of Students Who Failed: 1
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/OLA[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/OLA[00m$ exit
+[?2004lexit
+
+Script done on 2023-09-30 17:13:42-05:00 [COMMAND_EXIT_CODE="0"]
