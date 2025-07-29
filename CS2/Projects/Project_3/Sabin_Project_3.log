@@ -1,0 +1,149 @@
+Script started on 2024-02-28 17:53:04-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="159" LINES="49"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ pwd
+[?2004l/home/jovyan/CS2/Projects/Project_3
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ls -la
+[?2004ltotal 56
+drwxr-sr-x 3 jovyan users  4096 Feb 28 17:53 [0m[01;34m.[0m
+drwxr-sr-x 6 jovyan users  4096 Feb 24 11:19 [01;34m..[0m
+-rwxr-xr-x 1 jovyan users 23712 Feb 28 17:50 [01;32mdecoder[0m
+-rw-r--r-- 1 jovyan users  2946 Feb 28 17:50 galactic_decoder.cpp
+drwxr-sr-x 2 jovyan users  4096 Feb 24 11:32 [01;34m.ipynb_checkpoints[0m
+-rw-r--r-- 1 jovyan users    22 Feb 24 11:30 passcode1.dat
+-rw-r--r-- 1 jovyan users  1656 Feb 24 11:32 passcode2.dat
+-rw-r--r-- 1 jovyan users  2605 Feb 24 11:32 passcode3.dat
+-rw-r--r-- 1 jovyan users     5 Feb 24 11:32 passcode4.dat
+-rw-r--r-- 1 jovyan users     0 Feb 28 17:53 Sabin_Project_3.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ cat -n galactic_decoder.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Project 3
+     5	In this project, we will be decoding a passcode
+     6	through a set of instructions given by a file with
+     7	a starting point of 5 on the pincode
+     8	*/
+     9	
+    10	#include <iostream>
+    11	#include <fstream>
+    12	#include <string>
+    13	
+    14	//Declare functions at the top
+    15	int open_file(std::ifstream &inFile);
+    16	std::string decode_passcode(std::ifstream &inFile, std::string &passcode);
+    17	
+    18	int main(){
+    19	
+    20	    //Declare variables for read file & passcode
+    21	    std::ifstream inFile{};
+    22	    std::string passcode{};
+    23	    int fileExists{};
+    24	
+    25	    //Open file
+    26	    fileExists = open_file(inFile);
+    27	
+    28	    //Store the returned passcode into a variable
+    29	    if(fileExists == 1){
+    30	        passcode = decode_passcode(inFile, passcode);
+    31	        //Print out the passcode
+    32	        std::cout << "Passcode: " << passcode << '\n';
+    33	    }
+    34	    
+    35	
+    36	    //Close file
+    37	    inFile.close();
+    38	
+    39	    return 0;
+    40	}
+    41	
+    42	
+    43	
+    44	
+    45	
+    46	
+    47	int open_file(std::ifstream &inFile){
+    48	    
+    49	    //Set variable for input file name
+    50	    std::string fileName{};
+    51	
+    52	    std::cout << "Enter file to translate: ";
+    53	    std::cin >> fileName;
+    54	    std::cout << '\n';
+    55	
+    56	    //Attempt to open file, if file doesn't exist, print an error code
+    57	    inFile.open(fileName);
+    58	    if(!inFile){
+    59	        std::cout << fileName << "was unable to be opened...\n";
+    60	        return 2;
+    61	    } else{
+    62	        return 1;
+    63	    }
+    64	
+    65	}
+    66	
+    67	std::string decode_passcode(std::ifstream &inFile, std::string &passcode){
+    68	    
+    69	    //Set variables for char instruction and starting point
+    70	    char instruction{};
+    71	    int startingPoint {5};
+    72	
+    73	    //Loop through the file while contents exist
+    74	    while(inFile){
+    75	        //Get the char for the instruction (R/L/U/D)
+    76	        inFile.get(instruction);
+    77	        //If the character is a new line char, skip steps
+    78	        if(instruction != '\n'){
+    79	            /*
+    80	            If the char is U and the current position is not 2, subtract 3
+    81	            If the char is D and the current position is not 8, add 3
+    82	            If the char is R and the current position is not 3, 6, or 9, add 1
+    83	            If the char is L and the current position is not 1, 4, or 7, subtract 1
+    84	            */
+    85	            if(instruction == 'U' && startingPoint != 2){
+    86	                startingPoint = startingPoint - 3;
+    87	            } else if(instruction == 'D' && startingPoint != 8){
+    88	                startingPoint = startingPoint + 3;
+    89	            } else if(instruction == 'R' && (startingPoint != 3 && startingPoint != 6 && startingPoint != 9)){
+    90	                startingPoint = startingPoint + 1;
+    91	            } else if(instruction == 'L' && (startingPoint != 1 && startingPoint != 4 && startingPoint != 7)){
+    92	                startingPoint = startingPoint - 1;
+    93	            } else{
+    94	                startingPoint = startingPoint;
+    95	            }
+    96	        }else{
+    97	            //Concat the current point to the passcode
+    98	            passcode += std::to_string(startingPoint);
+    99	            startingPoint = 5;
+   100	        }
+   101	    }
+   102	    //Return the passcode as a string
+   103	    return passcode;
+   104	
+   105	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ g++ -Wall -Werror -Wextra galactic_decope[K[Kder.cpp -o decoder
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ./decoder
+[?2004lEnter file to translate: passcode1.dat
+
+Passcode: 4156
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ./decoder
+[?2004lEnter file to translate: passcode2.dat
+
+Passcode: 531736201553206158665325558587612956565626286652846591349645625
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ./decoder
+[?2004lEnter file to translate: passcode3.dat
+
+Passcode: -3334-493
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ./decoder
+[?2004lEnter file to translate: passcode4.dat
+
+Passcode: 555555
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ./decoderg++ -Wall -Werror -Wextra galactic_decoder.cpp -o decoder[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./decoder[K
+[?2004lEnter file to translate: dum.dat
+
+dum.datwas unable to be opened...
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ ./decoder
+[?2004lEnter file to translate: sum.dat
+
+sum.datwas unable to be opened...
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_3[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-28 17:55:02-06:00 [COMMAND_EXIT_CODE="0"]
