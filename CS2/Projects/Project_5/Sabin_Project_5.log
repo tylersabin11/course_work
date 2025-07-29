@@ -1,0 +1,256 @@
+Script started on 2024-03-28 18:48:14-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="161" LINES="39"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ pwd
+[?2004l/home/jovyan/CS2/Projects/Project_5
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ ls -la
+[?2004ltotal 76
+drwxr-sr-x 3 jovyan users  4096 Mar 28 18:48 [0m[01;34m.[0m
+drwxr-sr-x 8 jovyan users  4096 Mar 23 00:19 [01;34m..[0m
+drwxr-sr-x 2 jovyan users  4096 Mar 28 18:36 [01;34m.ipynb_checkpoints[0m
+-rw-r--r-- 1 jovyan users 10551 Mar 23 00:20 long_ledger.dat
+-rw-r--r-- 1 jovyan users   397 Mar 28 18:47 main.cpp
+-rw-r--r-- 1 jovyan users 30860 Mar 23 00:20 medium_ledger.dat
+-rw-r--r-- 1 jovyan users     0 Mar 28 18:48 Sabin_Project_5.log
+-rw-r--r-- 1 jovyan users    45 Mar 23 00:20 sample.dat
+-rw-r--r-- 1 jovyan users   337 Mar 23 00:19 short_ledger.dat
+-rw-r--r-- 1 jovyan users  3023 Mar 28 18:45 Zentharian.cpp
+-rw-r--r-- 1 jovyan users   745 Mar 28 18:12 Zentharian.h
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ cat -n Zentharian.h
+[?2004l     1	#ifndef ZENTHARIAN_H
+     2	#define ZENTHARIAN_H_H
+     3	#include <array>
+     4	#include <fstream>
+     5	
+     6	const int kMaxZen{1000};
+     7	const int kMaxCrystal{20};
+     8	
+     9	class Zentharian{
+    10	
+    11	private:
+    12	    //Count for the Zen
+    13	    int m_ZenCount{0};
+    14	    //Count for the amount of Crystals that Zen has
+    15	    int m_CrystalCount{0};
+    16	    //Count for the total of the Crystals
+    17	    int m_crystalTotal{0};
+    18	    //File object
+    19	    std::string m_inFileName{0};
+    20	    //Array for the crystals then Zen has
+    21	    std::array<int,kMaxCrystal> m_arrCrystals{};
+    22	
+    23	public:
+    24	    //open the file
+    25	    bool open_file();
+    26	    //Process the file
+    27	    void process_file();
+    28	    //Update the class members;
+    29	    void display_info();
+    30	    //Overloaded operator for comparison
+    31	    bool operator > (Zentharian& rhs);
+    32	};
+    33	
+    34	#endif[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ cat -n Zentharian.cpp
+[?2004l     1	#include "Zentharian.h"
+     2	#include <iostream>
+     3	#include <fstream>
+     4	#include <string>
+     5	#include <array>
+     6	
+     7	
+     8	void Zentharian::process_file(){
+     9	    std::array<int,kMaxCrystal> tempArr{};
+    10	    //Count for num of Crystals
+    11	    int tempNum {};
+    12	    //Temp Variable for Crystal Total
+    13	    int tempCrystalTotal{};
+    14	    //Count for index
+    15	    int tempCount{0};
+    16	    //Temp variable for Get Line
+    17	    std::string tempString{};
+    18	    //Temp variable for Zen Count
+    19	    int tempZenCount{};
+    20	
+    21	    std::ifstream inFile{m_inFileName};
+    22	
+    23	    while(std::getline(inFile, tempString)){
+    24	        //Check to see if the file is empty
+    25	        if(!tempString.empty()){
+    26	            //convert string to int
+    27	            tempNum = std::stoi(tempString);            
+    28	            //Count index = Num of Crystals
+    29	            tempArr[tempCount] = tempNum;
+    30	            //Increase index
+    31	            tempCount++;
+    32	            //Total of crystals increased by the crystal number
+    33	            tempCrystalTotal += tempNum;
+    34	        }else{
+    35	            //Add one to the zen count
+    36	            tempZenCount++;
+    37	            //Compare the crystal totals
+    38	            if(tempCrystalTotal > m_crystalTotal){
+    39	                //Set the private data members of the class
+    40	                m_ZenCount = tempZenCount;
+    41	                m_CrystalCount = tempCount;
+    42	                m_crystalTotal = tempCrystalTotal;
+    43	                //copy the contents of the temp arr to the private array
+    44	                for(int i{0}; i < tempCount; i++){
+    45	                    m_arrCrystals[i] = tempArr[i];
+    46	                }
+    47	            
+    48	                //Reset the temp variables
+    49	                for(int i{0}; i < kMaxCrystal; i++){
+    50	                    tempArr[i] = 0;
+    51	                }
+    52	                tempCount = 0;
+    53	                tempCrystalTotal = 0;
+    54	            }else{
+    55	                //Reset the temp variables
+    56	                for(int i{0}; i < kMaxCrystal; i++){
+    57	                    tempArr[i] = 0;
+    58	                }
+    59	                tempCount = 0;
+    60	                tempCrystalTotal = 0;
+    61	            }
+    62	        }
+    63	    }
+    64	    
+    65	}
+    66	
+    67	//Print the contents
+    68	void Zentharian::display_info(){
+    69	    std::cout << "Zentharian " << m_ZenCount << " has " << m_CrystalCount << " worth\n";
+    70	    for(int i{0}; i < m_CrystalCount; i++){
+    71	        std::cout << m_arrCrystals[i] << '\n';
+    72	    }
+    73	    std::cout << "fuel each. Totaling " << m_crystalTotal << " units.\n";
+    74	}
+    75	
+    76	
+    77	
+    78	
+    79	bool Zentharian::open_file(){
+    80	    //Set variables
+    81	    std::ifstream inFile{};
+    82	    std::string fileName{};
+    83	    bool boolTemp = false;
+    84	
+    85	    std::cout << "Enter ledger file: ";
+    86	    std::cin >> fileName;
+    87	    std::cout << '\n';
+    88	    inFile.open(fileName);
+    89	
+    90	    //If you cant open the file, print an error message
+    91	    if(!inFile){
+    92	        boolTemp = true;
+    93	        std::cout << "Your entered an invalid ledger..." << fileName << '\n';
+    94	    } else{
+    95	        m_inFileName = fileName;
+    96	    }
+    97	    return boolTemp;
+    98	}
+    99	bool Zentharian::operator > (Zentharian& rhs){
+   100	    bool greatThan = false;
+   101	    if(m_crystalTotal > rhs.m_crystalTotal)
+   102	        greatThan = true;
+   103	    return greatThan;
+   104	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ cat -n main.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Project 5
+     5	In this project, we will work with OOP and files.
+     6	Our goal is to see which Zen has the highest total of crystals
+     7	Using arrays, classes, overloaded operators and more
+     8	*/
+     9	#include <iostream>
+    10	#include "Zentharian.h"
+    11	
+    12	int main(){
+    13	    Zentharian zen;
+    14	
+    15	    if(zen.open_file()){
+    16	        return 0;
+    17	    }
+    18	    zen.process_file();
+    19	    zen.display_info();
+    20	
+    21	    return 0;
+    22	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ g++ Wa[K[K-Wall -Wextra -Werror main.cpp Zentharian.cpp -o fuel
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ ./fuel
+[?2004lEnter ledger file: sample.dat
+
+Zentharian 4 has 3 worth
+700
+830
+910
+fuel each. Totaling 2440 units.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ ./fuel
+[?2004lEnter ledger file: long_ledger.dat
+
+Zentharian 22 has 15 worth
+5026
+5406
+2517
+5628
+4392
+5195
+5548
+4046
+2982
+4444
+4603
+4139
+5917
+4623
+5650
+fuel each. Totaling 70116 units.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ ./fuel
+[?2004lEnter ledger file: medium_ledger.dat
+
+Zentharian 385 has 18 worth
+28894
+195618
+188
+15146
+39077
+19271
+16271
+4387
+33914
+24635
+43799
+43127
+30385
+42622
+467190
+428521
+39192
+41473
+fuel each. Totaling 1513710 units.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ ./fuel
+[?2004lEnter ledger file: short_ledger.dat
+
+Zentharian 3 has 15 worth
+24957
+45758
+30393
+44487
+30857
+33760
+49874
+36116
+8040
+27794
+44500
+18749
+36396
+12779
+10348
+fuel each. Totaling 454808 units.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ ./fuel
+[?2004lEnter ledger file: empty.daty 
+
+Your entered an invalid ledger...empty.dat
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_5[00m$ exit
+[?2004lexit
+
+Script done on 2024-03-28 18:50:06-05:00 [COMMAND_EXIT_CODE="0"]

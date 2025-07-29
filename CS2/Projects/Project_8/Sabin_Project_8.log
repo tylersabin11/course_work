@@ -1,0 +1,125 @@
+Script started on 2024-04-23 20:24:18-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="159" LINES="49"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ pwd
+[?2004l/home/jovyan/CS2/Projects/Project_8
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ ls -la
+[?2004ltotal 24
+drwxr-sr-x  3 jovyan users 4096 Apr 23 20:24 [0m[01;34m.[0m
+drwxr-sr-x 10 jovyan users 4096 Apr 23 19:48 [01;34m..[0m
+-rw-r--r--  1 jovyan users  368 Apr 23 20:23 Circle.cpp
+-rw-r--r--  1 jovyan users  171 Apr 23 20:03 Circle.h
+-rw-r--r--  1 jovyan users  670 Apr 23 20:24 finalpractice.cpp
+drwxr-sr-x  2 jovyan users 4096 Apr 23 20:22 [01;34m.ipynb_checkpoints[0m
+-rw-r--r--  1 jovyan users    0 Apr 23 20:24 Sabin_Project_8.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ cat -n Circle.h
+[?2004l     1	#ifndef CIRCLE_H
+     2	#define CIRCLE_H
+     3	
+     4	
+     5	class Circle{
+     6	
+     7	private:
+     8	    int radius{};
+     9	
+    10	public:
+    11	    void set_radius(int value){radius = value;}
+    12	    void print_values();
+    13	
+    14	};
+    15	
+    16	#endif[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ cat -n Circle.cpp
+[?2004l     1	#include "Circle.h"
+     2	#include <iostream>
+     3	#include <cmath>
+     4	
+     5	//Display the values
+     6	void Circle::print_values(){
+     7	    //Set diameter
+     8	    int diameter = radius * 2;
+     9	    //Set area
+    10	    double area = M_PI * pow(radius,2);
+    11	    //Print out contents
+    12	    std::cout << "The circle with radius " << radius << " has a diameter of " << diameter << " and an area of " << area << '\n';
+    13	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ cat -n finalpractice.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Project 8
+     5	In this project we will recapp working with classes
+     6	*/
+     7	
+     8	#include "Circle.h"
+     9	#include <iostream>
+    10	#include <array>
+    11	
+    12	int main(){
+    13	
+    14	    //Set variables for array, num of circs, and the class object
+    15	    std::array<int,20> radius{};
+    16	    int numCircs{};
+    17	    Circle circles;
+    18	
+    19	    do{
+    20	        std::cout << "Input the number of circles to create between 1 and 20: ";
+    21	        std::cin >> numCircs;
+    22	    }while(numCircs <= 0 || numCircs > 20);
+    23	
+    24	    for(int i{0}; i < numCircs; i++){
+    25	        radius[i] = i +1;
+    26	    }
+    27	    for(int i{0}; i < numCircs; i++){
+    28	        circles.set_radius(radius[i]);
+    29	        circles.print_values();
+    30	    }
+    31	
+    32	
+    33	    return 0;
+    34	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ g++ -Wall -Wextra -Wa[Kerror Circle.cpp finalpractice.cpp
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ g++ -Wall -Wextra -Werror Circle.cpp finalpractice.cpp -o final
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ ./final
+[?2004lInput the number of circles to create between 1 and 20: 0
+Input the number of circles to create between 1 and 20: 25
+Input the number of circles to create between 1 and 20: 30
+Input the number of circles to create between 1 and 20: 20
+The circle with radius 1 has a diameter of 2 and an area of 3.14159
+The circle with radius 2 has a diameter of 4 and an area of 12.5664
+The circle with radius 3 has a diameter of 6 and an area of 28.2743
+The circle with radius 4 has a diameter of 8 and an area of 50.2655
+The circle with radius 5 has a diameter of 10 and an area of 78.5398
+The circle with radius 6 has a diameter of 12 and an area of 113.097
+The circle with radius 7 has a diameter of 14 and an area of 153.938
+The circle with radius 8 has a diameter of 16 and an area of 201.062
+The circle with radius 9 has a diameter of 18 and an area of 254.469
+The circle with radius 10 has a diameter of 20 and an area of 314.159
+The circle with radius 11 has a diameter of 22 and an area of 380.133
+The circle with radius 12 has a diameter of 24 and an area of 452.389
+The circle with radius 13 has a diameter of 26 and an area of 530.929
+The circle with radius 14 has a diameter of 28 and an area of 615.752
+The circle with radius 15 has a diameter of 30 and an area of 706.858
+The circle with radius 16 has a diameter of 32 and an area of 804.248
+The circle with radius 17 has a diameter of 34 and an area of 907.92
+The circle with radius 18 has a diameter of 36 and an area of 1017.88
+The circle with radius 19 has a diameter of 38 and an area of 1134.11
+The circle with radius 20 has a diameter of 40 and an area of 1256.64
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ ./final
+[?2004lInput the number of circles to create between 1 and 20: 10
+The circle with radius 1 has a diameter of 2 and an area of 3.14159
+The circle with radius 2 has a diameter of 4 and an area of 12.5664
+The circle with radius 3 has a diameter of 6 and an area of 28.2743
+The circle with radius 4 has a diameter of 8 and an area of 50.2655
+The circle with radius 5 has a diameter of 10 and an area of 78.5398
+The circle with radius 6 has a diameter of 12 and an area of 113.097
+The circle with radius 7 has a diameter of 14 and an area of 153.938
+The circle with radius 8 has a diameter of 16 and an area of 201.062
+The circle with radius 9 has a diameter of 18 and an area of 254.469
+The circle with radius 10 has a diameter of 20 and an area of 314.159
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ ./final
+[?2004lInput the number of circles to create between 1 and 20: 5
+The circle with radius 1 has a diameter of 2 and an area of 3.14159
+The circle with radius 2 has a diameter of 4 and an area of 12.5664
+The circle with radius 3 has a diameter of 6 and an area of 28.2743
+The circle with radius 4 has a diameter of 8 and an area of 50.2655
+The circle with radius 5 has a diameter of 10 and an area of 78.5398
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_8[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_8[00m$ exit
+[?2004lexit
+
+Script done on 2024-04-23 20:25:38-05:00 [COMMAND_EXIT_CODE="0"]
