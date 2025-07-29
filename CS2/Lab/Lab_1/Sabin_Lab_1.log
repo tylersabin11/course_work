@@ -1,0 +1,34 @@
+Script started on 2024-01-23 11:27:35-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="67" LINES="54"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ ls
+[?2004l Ch2_1.log    DefineFunctions.ipynb   questionnaire.txt
+ Ch2_1.pdf    [0m[01;34mlost+found[0m              Sabin_Lab_1.log
+ [01;34mCLA[0m          [01;34mOLA[0m                    'Tyler Sabin.md'
+ CLA3.html    prog1.pdf               [01;34munixstuff[0m
+ CLA3.ipynb   prog1.py
+ CLA3.pdf     prog1.py.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ cat questionnaire.txt
+[?2004lTyler Sabin
+Tyler
+I am motivated to take this class due to it being a continuation within programming.
+This is my first time taking 2170
+I hope to have a strong understanding of C++ by the end of the semester.
+My current level of comfort would be about a 7/10.
+I have both MacOS and Windows
+Yes, I actually write code in SQL and Python for my current job.
+N/a
+I am at a 8.5/10 comfort level
+I plan on dedicating at least 4 hours a week for practice
+I work a full time job while attending school full time, so I work 40 hours 
+I plan to ensure that I use proper time management and complete the labs in lab
+
+Labs are due on Friday at 5pm
+No, they can not
+Yes, they can, but it is 10% off each date late before the deadline
+You should include the section of the class (Ex: 2170-XXX)
+Office hours are Monday-Thursday at specified times on the syllabus
+All answers can be found on the Syllabus[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ pwd
+[?2004l/home/jovyan
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2024-01-23 11:28:10-06:00 [COMMAND_EXIT_CODE="0"]
