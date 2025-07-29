@@ -1,0 +1,187 @@
+Script started on 2024-01-30 11:46:41-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="81" LINES="40"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_3
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ ls -la
+[?2004ltotal 32
+drwxr-sr-x 2 jovyan users  4096 Jan 30 11:46 [0m[01;34m.[0m
+drwxr-sr-x 6 jovyan users  4096 Jan 30 09:38 [01;34m..[0m
+-rwxr-xr-x 1 jovyan users 17664 Jan 30 11:45 [01;32ma.out[0m
+-rw-r--r-- 1 jovyan users  1762 Jan 30 11:44 madlib.cpp
+-rw-r--r-- 1 jovyan users     0 Jan 30 11:46 Sabin_Lab_3.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ cat -n madlib.cpp
+[?2004l     1	#include <iostream>
+     2	#include <string>
+     3	
+     4	int main(){
+     5	    std::string Title{};
+     6	    int Num{};
+     7	    std::string Name{};
+     8	    std::string Alien_Name{};
+     9	    float FloNum{};
+    10	    std::string Noun{};
+    11	    std::string PlurNoun{};
+    12	
+    13	    std::cout << "Suggest a Sci-Fi themed title:\n";
+    14	    std::getline(std::cin, Title);
+    15	
+    16	    std::cout << "Enter an integer:\n";
+    17	    std::cin >> Num;
+    18	
+    19	    std::cout << "Enter a cool name:\n";
+    20	    std::cin.ignore();
+    21	    std::getline(std::cin, Name);
+    22	
+    23	    std::cout << "Suggest an alien race name:\n";
+    24	    std::cin >> Alien_Name;
+    25	
+    26	    std::cout << "Enter a floating point number:\n";
+    27	    std::cin >> FloNum;
+    28	
+    29	    std::cout << "Enter a singular noun:\n";
+    30	    std::cin >> Noun;
+    31	
+    32	    std::cout << "Enter a plural noun:\n";
+    33	    std::cin >> PlurNoun;
+    34	
+    35	    std::cout << '\n' << "\"" << Title << "\"" << '\n' << '\n';
+    36	    std::cout << "In the year " << Num << " , a daring explorer named " << Name 
+    37	    << " embarked on a crucial mission. Armed with a mysterious family heirloom passed down for " << FloNum 
+    38	    << " generations, " << Name << " journeyed through space." << '\n' << '\n';
+    39	    std::cout << "An urgent plea for help arrived from the " << Alien_Name << " , whose homeworld faced destruction in just days."
+    40	    << '\n' << '\n';
+    41	    std::cout << "In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)" << '\n' << '\n';
+    42	    std::cout << "With unyielding resolve, " << Name << " encountered a strange " << Noun << " and unexpected " << PlurNoun << ", inching closer to the " << Alien_Name 
+    43	    << "\'s planet. As " << Name << " neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the " << Alien_Name << " 's world from annihilation." 
+    44	    << '\n';
+    45	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ g++ -Wall -Werror -Wextra madlib.cpp  -o
+[?2004l[01m[Kg++:[m[K [01;31m[Kerror: [m[Kmissing filename after ‘[01m[K-o[m[K’
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ [7mg++ -Wall -Werror -Wextra madlib.cpp[27m[7m [27m[7m-o mad[27m[A(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ g++ -Wall -Werror -Wextra madlib.cpp -o mad
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ ./mad
+[?2004lSuggest a Sci-Fi themed title:
+Space Frontier
+Enter an integer:
+7777
+Enter a cool name:
+Freon the Explorer
+Suggest an alien race name:
+Xyzederons
+Enter a floating point number:
+18.2345232
+Enter a singular noun:
+potato
+Enter a plural noun:
+cats
+
+"Space Frontier"
+
+In the year 7777 , a daring explorer named Freon the Explorer embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 18.2345 generations, Freon the Explorer journeyed through space.
+
+An urgent plea for help arrived from the Xyzederons , whose homeworld faced destruction in just days.
+
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+
+With unyielding resolve, Freon the Explorer encountered a strange potato and unexpected cats, inching closer to the Xyzederons's planet. As Freon the Explorer neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Xyzederons 's world from annihilation.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ ./mad
+[?2004lSuggest a Sci-Fi themed title:
+Hahah
+Enter an integer:
+12
+Enter a cool name:
+Zip
+Suggest an alien race name:
+Pops
+Enter a floating point number:
+12.493
+Enter a singular noun:
+tater
+Enter a plural noun:
+towns
+
+"Hahah"
+
+In the year 12 , a daring explorer named Zip embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 12.493 generations, Zip journeyed through space.
+
+An urgent plea for help arrived from the Pops , whose homeworld faced destruction in just days.
+
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+
+With unyielding resolve, Zip encountered a strange tater and unexpected towns, inching closer to the Pops's planet. As Zip neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Pops 's world from annihilation.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ ./mad
+[?2004lSuggest a Sci-Fi themed title:
+PSo
+Enter an integer:
+023
+Enter a cool name:
+PlaneBye
+Suggest an alien race name:
+Sjsjhfh
+Enter a floating point number:
+12.0844
+Enter a singular noun:
+grand
+Enter a plural noun:
+germs
+
+"PSo"
+
+In the year 23 , a daring explorer named PlaneBye embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 12.0844 generations, PlaneBye journeyed through space.
+
+An urgent plea for help arrived from the Sjsjhfh , whose homeworld faced destruction in just days.
+
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+
+With unyielding resolve, PlaneBye encountered a strange grand and unexpected germs, inching closer to the Sjsjhfh's planet. As PlaneBye neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Sjsjhfh 's world from annihilation.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ ./mad
+[?2004lSuggest a Sci-Fi themed title:
+Flings
+Enter an integer:
+45
+Enter a cool name:
+Kim
+Suggest an alien race name:
+xhxhdhhdh
+Enter a floating point number:
+34.546
+Enter a singular noun:
+grandma
+Enter a plural noun:
+potatos
+
+"Flings"
+
+In the year 45 , a daring explorer named Kim embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 34.546 generations, Kim journeyed through space.
+
+An urgent plea for help arrived from the xhxhdhhdh , whose homeworld faced destruction in just days.
+
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+
+With unyielding resolve, Kim encountered a strange grandma and unexpected potatos, inching closer to the xhxhdhhdh's planet. As Kim neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the xhxhdhhdh 's world from annihilation.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ ./mad
+[?2004lSuggest a Sci-Fi themed title:
+Weeeeee
+Enter an integer:
+43
+Enter a cool name:
+Drap
+Suggest an alien race name:
+Xjdjdjd
+Enter a floating point number:
+45.9999
+Enter a singular noun:
+clay
+Enter a plural noun:
+clams
+
+"Weeeeee"
+
+In the year 43 , a daring explorer named Drap embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 45.9999 generations, Drap journeyed through space.
+
+An urgent plea for help arrived from the Xjdjdjd , whose homeworld faced destruction in just days.
+
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+
+With unyielding resolve, Drap encountered a strange clay and unexpected clams, inching closer to the Xjdjdjd's planet. As Drap neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Xjdjdjd 's world from annihilation.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_3[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_3[00m$ exit
+[?2004lexit
+
+Script done on 2024-01-30 11:50:37-06:00 [COMMAND_EXIT_CODE="0"]
