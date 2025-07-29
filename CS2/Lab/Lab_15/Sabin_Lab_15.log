@@ -1,0 +1,325 @@
+Script started on 2024-03-29 14:12:04-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="132" LINES="33"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_15
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ ls -la
+[?2004ltotal 24
+drwxr-sr-x  3 jovyan users 4096 Mar 29 14:12 [0m[01;34m.[0m
+drwxr-sr-x 17 jovyan users 4096 Mar 27 12:36 [01;34m..[0m
+-rw-r--r--  1 jovyan users 1837 Mar 29 14:11 driver.cpp
+drwxr-sr-x  2 jovyan users 4096 Mar 29 14:11 [01;34m.ipynb_checkpoints[0m
+-rw-r--r--  1 jovyan users 1810 Mar 29 14:04 Rectangle.cpp
+-rw-r--r--  1 jovyan users  709 Mar 29 14:00 Rectangle.h
+-rw-r--r--  1 jovyan users    0 Mar 29 14:12 Sabin_Lab_15.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ cat -n Rectangle.h
+[?2004l     1	#ifndef RECTANGLE_H
+     2	#define RECTANGLE_H
+     3	
+     4	class Rectangle{
+     5	
+     6	private:
+     7	    int m_length{};
+     8	    int m_width{};
+     9	    int m_area{};
+    10	
+    11	public:
+    12	    //Default constructor
+    13	    Rectangle();
+    14	    //Overloaded constructor
+    15	    Rectangle(int,int);
+    16	    //Accessors
+    17	    void get_length();
+    18	    void get_width();
+    19	    //Calculate the area
+    20	    void calculate_area(){m_area = m_length * m_width;}
+    21	    //Display info
+    22	    void display_info();
+    23	
+    24	    bool operator == (Rectangle& rhs);
+    25	    bool operator != (Rectangle& rhs);
+    26	    bool operator < (Rectangle& rhs);
+    27	    bool operator > (Rectangle& rhs);
+    28	    bool operator <= (Rectangle& rhs);
+    29	    bool operator >= (Rectangle& rhs);
+    30	    void operator ++ ();
+    31	    void operator -- ();
+    32	};
+    33	
+    34	#endif[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ cat -n Rectangle.cpp
+[?2004l     1	
+     2	#include "Rectangle.h"
+     3	#include <iostream>
+     4	
+     5	Rectangle::Rectangle(){
+     6	    m_length = 1;
+     7	    m_width = 1;
+     8	}
+     9	Rectangle::Rectangle(int len, int width){
+    10	    m_length = len;
+    11	    m_width = width;
+    12	}
+    13	void Rectangle::get_length(){
+    14	    int length{};
+    15	    std::cout << "Enter the length: ";
+    16	    std::cin >> length;
+    17	    m_length = length;
+    18	}
+    19	void Rectangle::get_width(){
+    20	    int width{};
+    21	    std::cout << "Enter the width: ";
+    22	    std::cin >> width;
+    23	    m_width = width;
+    24	}
+    25	void Rectangle::display_info(){
+    26	    std::cout << "Length: " << m_length << '\n' << "Width: " << m_width << '\n' << "Area: " << m_area << '\n';
+    27	}
+    28	
+    29	//Overloaded Operators
+    30	bool Rectangle::operator == (Rectangle& rhs){
+    31	    bool isequal = false;
+    32	    if((m_length == rhs.m_length) && (m_width == rhs.m_width) && (m_area == rhs.m_area))
+    33	        isequal = true;
+    34	    return isequal;
+    35	}
+    36	bool Rectangle::operator != (Rectangle& rhs){
+    37	    bool notequal = false;
+    38	    if((m_length != rhs.m_length) || (m_width != rhs.m_width) || (m_area != rhs.m_area))
+    39	        notequal = true;
+    40	    return notequal;
+    41	}
+    42	bool Rectangle::operator < (Rectangle& rhs){
+    43	    bool lessThan = false;
+    44	    if(m_area < rhs.m_area)
+    45	        lessThan = true;
+    46	    return lessThan;
+    47	}
+    48	bool Rectangle::operator > (Rectangle& rhs){
+    49	    bool greaterThan = false;
+    50	    if(m_area > rhs.m_area)
+    51	        greaterThan = true;
+    52	    return greaterThan;
+    53	}
+    54	bool Rectangle::operator <= (Rectangle& rhs){
+    55	    bool lessThanOrEq = false;
+    56	    if(m_area <= rhs.m_area)
+    57	        lessThanOrEq = true;
+    58	    return lessThanOrEq;
+    59	}
+    60	bool Rectangle::operator >= (Rectangle& rhs){
+    61	    bool greaterThanOrEq = false;
+    62	    if(m_area >= rhs.m_area)
+    63	        greaterThanOrEq = true;
+    64	    return greaterThanOrEq;
+    65	}
+    66	void Rectangle::operator ++ (){
+    67	    m_length++;
+    68	    m_width++;
+    69	}
+    70	void Rectangle::operator -- (){
+    71	    m_length--;
+    72	    m_width--;
+    73	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ cat -n driver.cpp
+[?2004l     1	//Tyler Sabin
+     2	//Section 004
+     3	//Lab 15
+     4	//In this lab we will overload operators and compare Rectangles
+     5	
+     6	#include "Rectangle.h"
+     7	#include <iostream>
+     8	
+     9	int main(){
+    10	
+    11	    Rectangle rec1{};
+    12	    Rectangle rec2{};
+    13	    Rectangle rec3{7,23};
+    14	    Rectangle rec4{};
+    15	    Rectangle rec5{};
+    16	
+    17	    rec5 = rec3;
+    18	
+    19	    rec2.get_length();
+    20	    rec2.get_width();
+    21	    std::cout << '\n';
+    22	
+    23	    rec4.get_length();
+    24	    rec4.get_width();
+    25	    std::cout << '\n';
+    26	
+    27	    rec1.calculate_area();
+    28	    rec2.calculate_area();
+    29	    rec3.calculate_area();
+    30	    rec4.calculate_area();
+    31	    rec5.calculate_area();
+    32	
+    33	    std::cout << "Rec1: \n";
+    34	    rec1.display_info();
+    35	    std::cout << '\n';
+    36	    std::cout << "Rec2: \n";
+    37	    rec2.display_info();
+    38	    std::cout << '\n';
+    39	    std::cout << "Rec3: \n";
+    40	    rec3.display_info();
+    41	    std::cout << '\n';
+    42	    std::cout << "Rec4: \n";
+    43	    rec4.display_info();
+    44	    std::cout << '\n';
+    45	    std::cout << "Rec5: \n";
+    46	    rec5.display_info();
+    47	    std::cout << '\n';
+    48	
+    49	    if(rec3 == rec5){
+    50	        std::cout << "Rec3 & Rec5 are equal\n";
+    51	    }else{
+    52	        std::cout << "Rec3 & Rec5 are not equal\n";
+    53	    }
+    54	
+    55	    if(rec1 != rec4){
+    56	        std::cout << "Rec1 & Rec4 are not equal\n";
+    57	    }else{
+    58	        std::cout << "Rec1 & Rec4 are equal\n";
+    59	    }
+    60	
+    61	    if(rec3 >= rec5){
+    62	        std::cout << "Rec3 is greater than or equal to Rec5\n";
+    63	    }else{
+    64	        std::cout << "Rec3 is less than Rec5\n";
+    65	    }
+    66	
+    67	    if(rec5 <= rec1){
+    68	        std::cout << "Rec5 is less than or equal to rec1\n";
+    69	    }else{
+    70	        std::cout << "Rec5 is greater than rec1\n";
+    71	    }
+    72	
+    73	    if(rec1 < rec3){
+    74	        std::cout << "Rec1 is less than Rec3\n";
+    75	    }else{
+    76	        std::cout << "Rec1 is greater than Rec3\n";
+    77	    }
+    78	
+    79	    if(rec2 > rec5){
+    80	        std::cout << "Rec2 is greater than Rec5\n";
+    81	    }else{
+    82	        std::cout << "Rec5 is greater than Rec2\n";
+    83	    }
+    84	
+    85	
+    86	    return 0;
+    87	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ g++ -Wall =[K-Wextra -Werror driver.cpp Rectangle.cpp -o sweep
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ ./sweep
+[?2004lEnter the length: 5
+Enter the width: 5
+
+Enter the length: 5
+Enter the width: 5
+
+Rec1: 
+Length: 1
+Width: 1
+Area: 1
+
+Rec2: 
+Length: 5
+Width: 5
+Area: 25
+
+Rec3: 
+Length: 7
+Width: 23
+Area: 161
+
+Rec4: 
+Length: 5
+Width: 5
+Area: 25
+
+Rec5: 
+Length: 7
+Width: 23
+Area: 161
+
+Rec3 & Rec5 are equal
+Rec1 & Rec4 are not equal
+Rec3 is greater than or equal to Rec5
+Rec5 is greater than rec1
+Rec1 is less than Rec3
+Rec5 is greater than Rec2
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ ./sweep
+[?2004lEnter the length: 2
+Enter the width: 3
+
+Enter the length: 2
+Enter the width: 1
+
+Rec1: 
+Length: 1
+Width: 1
+Area: 1
+
+Rec2: 
+Length: 2
+Width: 3
+Area: 6
+
+Rec3: 
+Length: 7
+Width: 23
+Area: 161
+
+Rec4: 
+Length: 2
+Width: 1
+Area: 2
+
+Rec5: 
+Length: 7
+Width: 23
+Area: 161
+
+Rec3 & Rec5 are equal
+Rec1 & Rec4 are not equal
+Rec3 is greater than or equal to Rec5
+Rec5 is greater than rec1
+Rec1 is less than Rec3
+Rec5 is greater than Rec2
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ ./sweep
+[?2004lEnter the length: 6
+Enter the width: 4
+
+Enter the length: 3
+Enter the width: 2
+
+Rec1: 
+Length: 1
+Width: 1
+Area: 1
+
+Rec2: 
+Length: 6
+Width: 4
+Area: 24
+
+Rec3: 
+Length: 7
+Width: 23
+Area: 161
+
+Rec4: 
+Length: 3
+Width: 2
+Area: 6
+
+Rec5: 
+Length: 7
+Width: 23
+Area: 161
+
+Rec3 & Rec5 are equal
+Rec1 & Rec4 are not equal
+Rec3 is greater than or equal to Rec5
+Rec5 is greater than rec1
+Rec1 is less than Rec3
+Rec5 is greater than Rec2
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_15[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_15[00m$ exit
+[?2004lexit
+
+Script done on 2024-03-29 14:13:23-05:00 [COMMAND_EXIT_CODE="0"]
