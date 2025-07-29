@@ -1,0 +1,163 @@
+Script started on 2024-02-07 17:54:02-06:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="201" LINES="47"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ [7mg++ -Wall -Wextra -Werror festival.cpp -o hobbit[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cg++ -Wall -Wextra -Werror festival.cpp -o hobbit
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ .[K/hobbit
+[?2004lbash: /hobbit: No such file or directory
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ ./hobbit
+[?2004lHow many Mushrooms were sold? 302
+How many Lembas were sold? 59
+How many Cram Bread were sold? 120
+How many Salted Pork were sold? 110
+How many Rabbit Stew were sold? 300
+How many Honey Cake were sold? 330
+How many Well Water were sold? 210
+
+
+----------------------------------------------
+------Tomburan Longriver's Savory Dishes------
+----------------------------------------------
+QTY    DISH NAME  UNIT PRICE  TOTAL RECEIVED
+----------------------------------------------
+
+302      Mushrooms      $ 0.80          $ 241.60
+59      Lembas         $ 3.00          $ 177.00
+120      Cram Bread     $ 2.00          $ 240.00
+110      Salted Pork    $ 2.25          $ 247.50
+300      Rabbit Stew    $ 3.25          $ 975.00
+330      Honey Cake     $ 2.00          $ 660.00
+210      Well Water     $ 1.25          $ 262.50
+                                    ---------
+
+                TOTAL RECEIVED       $ 2803.60
+                     CUT TAKEN       $ 189.24
+               TOTAL MINUS CUT       $ 2614.36
+
+
+Total Profit pre-cut: $1401.80
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ ./hobbit
+[?2004lHow many Mushrooms were sold? 1
+How many Lembas were sold? 1
+How many Cram Bread were sold? 1
+How many Salted Pork were sold? 1
+How many Rabbit Stew were sold? 1
+How many Honey Cake were sold? 1
+How many Well Water were sold? 1
+
+
+----------------------------------------------
+------Tomburan Longriver's Savory Dishes------
+----------------------------------------------
+QTY    DISH NAME  UNIT PRICE  TOTAL RECEIVED
+----------------------------------------------
+
+1      Mushrooms      $ 0.80          $ 0.80
+1      Lembas         $ 3.00          $ 3.00
+1      Cram Bread     $ 2.00          $ 2.00
+1      Salted Pork    $ 2.25          $ 2.25
+1      Rabbit Stew    $ 3.25          $ 3.25
+1      Honey Cake     $ 2.00          $ 2.00
+1      Well Water     $ 1.25          $ 1.25
+                                    ---------
+
+                TOTAL RECEIVED       $ 14.55
+                     CUT TAKEN       $ 0.98
+               TOTAL MINUS CUT       $ 13.57
+
+
+Total Profit pre-cut: $7.28
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ ./hobbit
+[?2004lHow many Mushrooms were sold? 0
+How many Lembas were sold? 0
+How many Cram Bread were sold? 0
+How many Salted Pork were sold? 0
+How many Rabbit Stew were sold? 0
+How many Honey Cake were sold? 0
+How many Well Water were sold? 0
+
+
+----------------------------------------------
+------Tomburan Longriver's Savory Dishes------
+----------------------------------------------
+QTY    DISH NAME  UNIT PRICE  TOTAL RECEIVED
+----------------------------------------------
+
+0      Mushrooms      $ 0.80          $ 0.00
+0      Lembas         $ 3.00          $ 0.00
+0      Cram Bread     $ 2.00          $ 0.00
+0      Salted Pork    $ 2.25          $ 0.00
+0      Rabbit Stew    $ 3.25          $ 0.00
+0      Honey Cake     $ 2.00          $ 0.00
+0      Well Water     $ 1.25          $ 0.00
+                                    ---------
+
+                TOTAL RECEIVED       $ 0.00
+                     CUT TAKEN       $ 0.00
+               TOTAL MINUS CUT       $ 0.00
+
+
+Total Profit pre-cut: $0.00
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ ./hobbit
+[?2004lHow many Mushrooms were sold? 999
+How many Lembas were sold? 999
+How many Cram Bread were sold? 999
+How many Salted Pork were sold? 999
+How many Rabbit Stew were sold? 999
+How many Honey Cake were sold? 999
+How many Well Water were sold? 999
+
+
+----------------------------------------------
+------Tomburan Longriver's Savory Dishes------
+----------------------------------------------
+QTY    DISH NAME  UNIT PRICE  TOTAL RECEIVED
+----------------------------------------------
+
+999      Mushrooms      $ 0.80          $ 799.20
+999      Lembas         $ 3.00          $ 2997.00
+999      Cram Bread     $ 2.00          $ 1998.00
+999      Salted Pork    $ 2.25          $ 2247.75
+999      Rabbit Stew    $ 3.25          $ 3246.75
+999      Honey Cake     $ 2.00          $ 1998.00
+999      Well Water     $ 1.25          $ 1248.75
+                                    ---------
+
+                TOTAL RECEIVED       $ 14535.45
+                     CUT TAKEN       $ 981.14
+               TOTAL MINUS CUT       $ 13554.31
+
+
+Total Profit pre-cut: $7267.73
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ ./hobbit
+[?2004lHow many Mushrooms were sold? 100
+How many Lembas were sold? 200
+How many Cram Bread were sold? 125
+How many Salted Pork were sold? 310
+How many Rabbit Stew were sold? 7
+How many Honey Cake were sold? 2
+How many Well Water were sold? 34
+
+
+----------------------------------------------
+------Tomburan Longriver's Savory Dishes------
+----------------------------------------------
+QTY    DISH NAME  UNIT PRICE  TOTAL RECEIVED
+----------------------------------------------
+
+100      Mushrooms      $ 0.80          $ 80.00
+200      Lembas         $ 3.00          $ 600.00
+125      Cram Bread     $ 2.00          $ 250.00
+310      Salted Pork    $ 2.25          $ 697.50
+7      Rabbit Stew    $ 3.25          $ 22.75
+2      Honey Cake     $ 2.00          $ 4.00
+34      Well Water     $ 1.25          $ 42.50
+                                    ---------
+
+                TOTAL RECEIVED       $ 1696.75
+                     CUT TAKEN       $ 114.53
+               TOTAL MINUS CUT       $ 1582.22
+
+
+Total Profit pre-cut: $848.38
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-07 17:56:03-06:00 [COMMAND_EXIT_CODE="0"]
