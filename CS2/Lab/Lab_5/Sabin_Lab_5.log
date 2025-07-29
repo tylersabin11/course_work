@@ -1,0 +1,58 @@
+Script started on 2024-02-06 17:52:41-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="238" LINES="47"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_5
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ ls -la
+[?2004ltotal 12
+drwxr-sr-x 2 jovyan users 4096 Feb  6 17:52 [0m[01;34m.[0m
+drwxr-sr-x 8 jovyan users 4096 Feb  6 11:13 [01;34m..[0m
+-rw-r--r-- 1 jovyan users  667 Feb  6 17:52 ifstatements.cpp
+-rw-r--r-- 1 jovyan users    0 Feb  6 17:52 Sabin_Lab_5.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ cat -n ifstatements.cpp
+[?2004l     1	//Tyler Sabin
+     2	//Section 004
+     3	
+     4	#include <iostream>
+     5	#include <iomanip>
+     6	
+     7	int main(){
+     8	
+     9	    float grade{};
+    10	
+    11	    std::cout << "Enter a value between 0-100 (inclusive): " << ' ';
+    12	    std::cin >> grade;
+    13	
+    14	    std::cout << std::fixed << std::setprecision(2);
+    15	    if(grade >= 73 && grade <= 100){
+    16	        std::cout << '\n' << grade << ' ' << "is Great." << std::endl;
+    17	    } else if(grade >= 60){
+    18	        std::cout << '\n' << grade << ' ' << "is Passing." << std::endl;
+    19	    } else if (grade < 60 && grade >= 0){
+    20	        std::cout << '\n' << grade << ' ' << "is Failing." << std::endl;
+    21	    } else{
+    22	        std::cout << '\n' << grade << ' ' << "INVALID GRADE!" << std::endl;
+    23	    }
+    24	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ g__ -Wal[K[K[K[K[K[K[K++ -Wall -Wextra -Werror ifstatements.cpp -o ifreview
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ ./ifreview
+[?2004lEnter a value between 0-100 (inclusive):  73
+
+73.00 is Great.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ ./ifreview
+[?2004lEnter a value between 0-100 (inclusive):  69.99
+
+69.99 is Passing.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ ./ifreview
+[?2004lEnter a value between 0-100 (inclusive):  45
+
+45.00 is Failing.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ ./ifreview
+[?2004lEnter a value between 0-100 (inclusive):  -2
+
+-2.00 INVALID GRADE!
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ ./ifreview
+[?2004lEnter a value between 0-100 (inclusive):  -102.45
+
+-102.45 INVALID GRADE!
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_5[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_5[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-06 17:54:26-06:00 [COMMAND_EXIT_CODE="0"]
