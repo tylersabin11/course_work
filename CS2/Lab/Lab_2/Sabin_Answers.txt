@@ -1,0 +1,17 @@
+1. We are using the bash shell
+2. Tab button
+3. Use the cursor key to scroll up and enter
+4. The name of the home directory is jovyan
+5. mkdir backups
+6. ls lists all directories, ls -a lists all directories and hidden files, ls -t lists files and directories, ls -l lists the directories with time stamps
+7. I am unable to see files "Permission Denied"
+8. cd , cd ~
+9. cd 
+10. cd /..
+11. cp space_battle.txt space_battle.bak
+12. mkdir tempstuff, rmdir tempstuff
+13. mv space_battle.bak space_battle.copy
+14. the command ls *file* would list any file that the specific "file" name somewhere in the file name regardless if it is .cpp or .py
+15. the command would list any file containing at least one matched character
+16. "Unicode text, UTF-8 text, with very long lines (598)"
+17. 372 words
