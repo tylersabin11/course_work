@@ -1,0 +1,86 @@
+Tyler Sabin
+Section 004
+Lab 12 - Minesweeper
+
+Rules of Minesweeper:
+Minesweeper is a game where several mines are place around a specified grid amount. Ex: 10x10, 20x20, etc.
+The amount of mines, and the grid size, depends on the difficulty a user is playing on. The objective of the
+game is to flag all the mines on the grid correctly, without clicking on a mine. Hints are given to the user
+in a form of numbers. The numbers indicate the amount of mines surrounding the block. For an example, if there is 
+a 1 on the block, using the current block as a center of a 3x3 grid, there is one mine surrounding the block.
+If all mines are succesfully marked without clicking a mine, you win. If not, you lose.
+
+Since the game is layed out in a grid, the board should be stored onto a 2-Dimensional array. A 2d array would allow
+for values to be stored into a grid format that is displayable to the user. The array could be updated depending on the
+blocks shown, and hidden.
+
+My main function would look something like the following:
+
+Main(){
+
+    choose_difficulty();
+    display_empty_board();
+    prompt_for_dig_intial();
+    display_game_board();
+    play_game();
+
+}
+
+choose_difficulty():
+    Display menu of difficulty
+    Accept an int input that coorelates with a difficulty (1 for easy, 2 for medium, 3 for hard)
+    Loop for an int until it is either a 1,2, or 3
+    this will return the user input as an int that will be used to calculate the size of the board
+
+display_empty_board():
+    If difficulty = 1:
+        create an 2d array with a size of 8x10
+    Else if difficulty = 2:
+        create a 2d array with a size of 14x18
+    Else:
+        create a 2d array with a size of 20x23
+    Create a for Loop
+        print out the array of 0's
+
+prompt_for_dig_intial():
+    Request for an input from the user (Row)
+    Request for an input from the user (Col)
+    Take the input and mark the spot on the intial board
+    place bombs randomly (amount will depend on difficulty)
+    return the board
+    
+
+
+display_game_board():
+    for loop to display the board to the user
+
+prompt_for_game_dig_or_mark():
+    ask user if they want to dig or mark
+    if ans = dig:
+        get input
+        dig on the display_game_board
+    else:
+        get input
+        mark the spot on the display_game_board
+
+
+
+
+check_status():
+    See if the spot dug is a mine
+    If it is a mine:
+        print "You lose
+        return 0
+    Else:
+        If spot is not a bomb:
+            If all bombs marked & no more spots can be dug:
+                print "You win"
+                return 1
+            else:
+                prompt_for_game_dig()
+
+
+
+display_board():
+    If the return from check_status() is either a 1 or 0:
+        display the final board (W/L)
