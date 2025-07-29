@@ -1,0 +1,251 @@
+Script started on 2024-02-20 17:37:57-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="252" LINES="58"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ pwd
+[?2004l/home/jovyan/CS2/Projects/Project_2
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ls -la
+[?2004ltotal 20
+drwxr-sr-x 3 jovyan users 4096 Feb 20 17:37 [0m[01;34m.[0m
+drwxr-sr-x 5 jovyan users 4096 Feb 12 14:30 [01;34m..[0m
+-rw-r--r-- 1 jovyan users 5069 Feb 20 14:42 combatcalculator.cpp
+drwxr-sr-x 2 jovyan users 4096 Feb 20 17:37 [01;34m.ipynb_checkpoints[0m
+-rw-r--r-- 1 jovyan users    0 Feb 20 17:37 Sabin_Project_2.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ cat cat -n coma[Kbatcalculator.cpp
+[?2004lcat: cat: No such file or directory
+     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Project 2
+     5	In this project, we will be taking, and validating, 
+     6	inputs using a switch and case expression
+     7	*/
+     8	
+     9	#include <iostream>
+    10	#include <string>
+    11	#include <iomanip>
+    12	
+    13	int main(){
+    14	
+    15	    //Set variables for choice, damage and category
+    16	    std::string Choice{};
+    17	    float Damage{};
+    18	    std::string Category{};
+    19	
+    20	    float a_damage{};
+    21	    float n_damage{};
+    22	    float h_damage{};
+    23	
+    24	
+    25	    //Print out the calc UI and ask for inputs
+    26	    std::cout << "---------------------------------------" << '\n';
+    27	    std::cout << "------ Amazing Combat Calculator ------" << '\n';
+    28	    std::cout << "---------------------------------------" << '\n';
+    29	    std::cout << "Enter ability name: ";
+    30	    std::getline(std::cin, Choice);
+    31	    std::cout << "Enter base damage: ";
+    32	    std::cin >> Damage;
+    33	    std::cout << "Enter ability category: ";
+    34	    std::cin.ignore();
+    35	    std::getline(std::cin, Category);
+    36	    std::cout << '\n' << '\n';
+    37	
+    38	    std::cout << std::fixed << std::setprecision(1);
+    39	
+    40	    int Choice_Int{};
+    41	
+    42	
+    43	    //Convert input to an int for switch expression
+    44	    if(Choice == "Rest"){
+    45	        Choice_Int = 1;
+    46	    } else if(Choice == "Slap"){
+    47	        Choice_Int = 2;
+    48	    } else if(Choice == "FrostFire"){
+    49	        Choice_Int = 3;
+    50	    } else{
+    51	        Choice_Int = 4;
+    52	    }
+    53	
+    54	    switch(Choice_Int){
+    55	
+    56	        //For case 1-3, check to make sure the damage is between 0-9000
+    57	        case 1:
+    58	            if(Damage <= 0){
+    59	                std::cout << "All ability damage must be positive." << std::endl;
+    60	            } else if(Damage > 9000){
+    61	                std::cout << "Only Goku can deal more than 9000 dmg." << std::endl;
+    62	            } else{
+    63	
+    64	                //Validate category and make proper calculations
+    65	                if(Category == "A"){
+    66	                    a_damage = Damage / 4.0;
+    67	                    std::cout << Choice << ' ' << " dealt " << a_damage << ' ' << "area of effect damage to each target." << std::endl;
+    68	                } else if(Category == "N"){
+    69	                    n_damage = Damage * 1.2;
+    70	                    std::cout << Choice << ' ' << " dealt " << n_damage << ' ' << "boring normal damage to the target." << std::endl;
+    71	                } else if(Category == "H"){
+    72	                    h_damage = Damage * (-1.0);
+    73	                    std::cout << Choice << ' ' << " dealt " << h_damage << ' ' << "damage healing the target." << std::endl;
+    74	                } else{
+    75	                    //If category is not a valid input, inform user
+    76	                    std::cout << "Ability category" << ' ' << Category << ' ' << "not implemented." << std::endl;
+    77	                }
+    78	            }
+    79	            break;
+    80	        case 2:
+    81	            if(Damage <= 0){
+    82	                std::cout << "All ability damage must be positive." << std::endl;
+    83	            } else if(Damage > 9000){
+    84	                std::cout << "Only Goku can deal more than 9000 dmg." << std::endl;
+    85	            } else{
+    86	                if(Category == "A"){
+    87	                    a_damage = Damage / 4.0;
+    88	                    std::cout << Choice << ' ' << " dealt " << a_damage << ' ' << "area of effect damage to each target." << std::endl;
+    89	                } else if(Category == "N"){
+    90	                    n_damage = Damage * 1.2;
+    91	                    std::cout << Choice << ' ' << " dealt " << n_damage << ' ' << "boring normal damage to the target." << std::endl;
+    92	                } else if(Category == "H"){
+    93	                    h_damage = Damage * (-1.0);
+    94	                    std::cout << Choice << ' ' << " dealt " << h_damage << ' ' << "damage healing the target." << std::endl;
+    95	                } else{
+    96	                    std::cout << "Ability category" << ' ' << Category << ' ' << "not implemented." << std::endl;
+    97	                }
+    98	            }
+    99	            break;
+   100	        case 3:
+   101	            if(Damage <= 0){
+   102	                std::cout << "All ability damage must be positive." << std::endl;
+   103	            } else if(Damage > 9000){
+   104	                std::cout << "Only Goku can deal more than 9000 dmg." << std::endl;
+   105	            } else{
+   106	                if(Category == "A"){
+   107	                    a_damage = Damage / 4.0;
+   108	                    std::cout << Choice << ' ' << " dealt " << a_damage << ' ' << "area of effect damage to each target." << std::endl;
+   109	                } else if(Category == "N"){
+   110	                    n_damage = Damage * 1.2;
+   111	                    std::cout << Choice << ' ' << " dealt " << n_damage << ' ' << "boring normal damage to the target." << std::endl;
+   112	                } else if(Category == "H"){
+   113	                    h_damage = Damage * (-1.0);
+   114	                    std::cout << Choice << ' ' << " dealt " << h_damage << ' ' << "damage healing the target." << std::endl;
+   115	                } else{
+   116	                    std::cout << "Ability category" << ' ' << Category << ' ' << "not implemented." << std::endl;
+   117	                }
+   118	            }
+   119	            break;
+   120	        default:
+   121	        //If the input for choice is not valid, we will let the user know
+   122	            std::cout << "Ability" << ' ' << Choice << ' ' << "not implemented yet." << std::endl;
+   123	            break;
+   124	    }
+   125	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ g++ -Wall -Wextra -Werror combatcalculator.cpp -o combat
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: Slap
+Enter base damage: 200.25
+Enter ability category: N
+
+
+Slap  dealt 240.3 boring normal damage to the target.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: Rest
+Enter base damage: 100
+Enter ability category: H
+
+
+Rest  dealt -100.0 damage healing the target.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: FrostFire
+Enter base damage: 7777.77
+Enter ability category: A
+
+
+FrostFire  dealt 1944.4 area of effect damage to each target.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: TomatoToss
+Enter base damage: 900
+Enter ability category: N
+
+
+Ability TomatoToss not implemented yet.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: TomatoToss
+Enter base damage: -1
+Enter ability category: H
+
+
+Ability TomatoToss not implemented yet.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: ^[[5~R      Rest
+Enter base damage: 9001
+Enter ability category: H
+
+
+Only Goku can deal more than 9000 dmg.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: Slap
+Enter base damage: -10
+Enter ability category: N
+
+
+All ability damage must be positive.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: FrostFire
+Enter base damage: 3642.88
+Enter ability category: CX  X
+
+
+Ability category X not implemented.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name:  
+Enter base damage: 0.00
+Enter ability category:  
+
+
+Ability   not implemented yet.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: Slap
+Enter base damage: 94
+Enter ability category: H
+
+
+Slap  dealt -94.0 damage healing the target.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ ./combat
+[?2004l---------------------------------------
+------ Amazing Combat Calculator ------
+---------------------------------------
+Enter ability name: Rest
+Enter base damage: 21.24
+Enter ability category: Potato
+
+
+Ability category Potato not implemented.
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_2[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-20 17:41:21-06:00 [COMMAND_EXIT_CODE="0"]
