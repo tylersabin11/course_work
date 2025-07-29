@@ -1,0 +1,127 @@
+Script started on 2024-02-28 22:19:22-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="252" LINES="58"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_11
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ la[Ks -la
+[?2004ltotal 16
+drwxr-sr-x  3 jovyan users 4096 Feb 28 22:19 [0m[01;34m.[0m
+drwxr-sr-x 14 jovyan users 4096 Feb 28 18:06 [01;34m..[0m
+-rw-r--r--  1 jovyan users 1696 Feb 28 22:18 grade_compare.cpp
+drwxr-sr-x  2 jovyan users 4096 Feb 28 22:19 [01;34m.ipynb_checkpoints[0m
+-rw-r--r--  1 jovyan users    0 Feb 28 22:19 Sabin_Lab_11.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ cat -n Sabin_Lab[K[K[K[K[K[K[K[K[Kgrade_compare.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Lab 11
+     5	*/
+     6	
+     7	#include <iostream>
+     8	#include <array>
+     9	#include <string>
+    10	
+    11	//Declare global variables
+    12	const int kMaxSize_Arr1{5};
+    13	const int kMaxSize_Arr2{5};
+    14	
+    15	//Define function prototypes
+    16	std::array<double,kMaxSize_Arr1> GetGrades();
+    17	bool GradesAreSame(std::array <double,kMaxSize_Arr1> arr1, std::array <double,kMaxSize_Arr2> arr2);
+    18	
+    19	int main(){
+    20	
+    21	    //Declare array variables & bool variable
+    22	    std::array <double,kMaxSize_Arr1> array1{};
+    23	    std::array <double,kMaxSize_Arr2> array2{};
+    24	    bool gradeSame{};
+    25	
+    26	    std::cout << "Getting Student One" << '\n';
+    27	    //Call get grade function to store grades in an array
+    28	    array1 = GetGrades();
+    29	    std::cout << "Getting Student Two" << '\n';
+    30	    array2 = GetGrades();
+    31	    //Call bool function
+    32	    gradeSame = GradesAreSame(array1,array2);
+    33	    std::cout << '\n';
+    34	
+    35	    if(gradeSame == true){
+    36	        std::cout << "Both students have the SAME grades!" << '\n';
+    37	    } else{
+    38	        std::cout << "Both students have the DIFFERENT grades!" << '\n';
+    39	    }
+    40	
+    41	
+    42	    return 0;
+    43	}
+    44	
+    45	
+    46	std::array<double,kMaxSize_Arr1> GetGrades(){
+    47	    //Declare local array and variable for grades
+    48	    std::array <double,kMaxSize_Arr1> locArray{};
+    49	    double tempGrade{};
+    50	    //For loop to collect grade and store it in the array index
+    51	    for(int i{0}; i < kMaxSize_Arr1; i++){
+    52	        std::cout << "Enter grade: ";
+    53	        std::cin >> tempGrade;
+    54	        locArray[i] = tempGrade;
+    55	    }
+    56	    //Return array
+    57	    return locArray;
+    58	}
+    59	
+    60	bool GradesAreSame(std::array <double,kMaxSize_Arr1> arr1, std::array <double,kMaxSize_Arr2> arr2){
+    61	    //Test to see if the arrays are the same
+    62	    if(arr1 == arr2){
+    63	        return true;
+    64	    } else{
+    65	        return false;
+    66	    }
+    67	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ g++ -Wall -Wextra -Werror grade_compare.cpp -o compare
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ ./compare
+[?2004lGetting Student One
+Enter grade: 5
+Enter grade: 5
+Enter grade: 6
+Enter grade: 6
+Enter grade: 7
+Getting Student Two
+Enter grade: 5
+Enter grade: 5
+Enter grade: 6
+Enter grade: 6
+Enter grade: 7
+
+Both students have the SAME grades!
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ ./compare
+[?2004lGetting Student One
+Enter grade: 100.00
+Enter grade: 98.87
+Enter grade: 87.00
+Enter grade: 77.98
+Enter grade: 33.23
+Getting Student Two
+Enter grade: 100.00
+Enter grade: 97.87
+Enter grade: 33.23
+Enter grade: 87.00
+Enter grade: 77.98
+
+Both students have the DIFFERENT grades!
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ ./compare
+[?2004lGetting Student One
+Enter grade: 98.2
+Enter grade: 88.3
+Enter grade: 77.6
+Enter grade: 100.2
+Enter grade: 98.1
+Getting Student Two
+Enter grade: 98.2
+Enter grade: 88.3
+Enter grade: 77.6
+Enter grade: 100.2
+Enter grade: 98
+
+Both students have the DIFFERENT grades!
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_11[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_11[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-28 22:22:06-06:00 [COMMAND_EXIT_CODE="0"]
