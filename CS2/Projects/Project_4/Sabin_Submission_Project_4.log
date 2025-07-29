@@ -1,0 +1,225 @@
+Script started on 2024-03-19 22:05:12-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="284" LINES="65"]
+pw  [?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ pwd
+[?2004l/home/jovyan/CS2/Projects/Project_4
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ ls -la
+[?2004ltotal 68
+drwxr-sr-x 3 jovyan users  4096 Mar 19 22:05 [0m[01;34m.[0m
+drwxr-sr-x 7 jovyan users  4096 Mar  6 13:32 [01;34m..[0m
+drwxr-sr-x 2 jovyan users  4096 Mar 19 22:03 [01;34m.ipynb_checkpoints[0m
+-rw-r--r-- 1 jovyan users    68 Mar  6 13:35 products.dat
+-rwxr-xr-x 1 jovyan users 29088 Mar 19 21:53 [01;32mproject[0m
+-rw-r--r-- 1 jovyan users  6294 Mar 19 22:04 project4.cpp
+-rw-r--r-- 1 jovyan users   176 Mar 19 22:03 recipes2.dat
+-rw-r--r-- 1 jovyan users   171 Mar 19 22:03 recipes3.dat
+-rw-r--r-- 1 jovyan users   172 Mar  6 13:35 recipes.dat
+-rw-r--r-- 1 jovyan users     0 Mar 19 22:05 Sabin_Submission_Project_4.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ cat -n project4.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Project 4
+     5	This project will help us practice the use of 2-d arrays
+     6	as we will collect information regarding recipes from a file
+     7	store them in a 2-d array, calc the price for each product
+     8	and display the menu
+     9	
+    10	Input: Files containing menu/recipe information for products
+    11	Output: Display a menu to the console
+    12	*/
+    13	
+    14	#include <iostream>
+    15	#include <iomanip>
+    16	#include <fstream>
+    17	#include <string>
+    18	#include <array>
+    19	
+    20	//global constant variables
+    21	const int kMaxProducts{24};
+    22	const int kMaxIngredients{30};
+    23	
+    24	//function prototypes
+    25	void open_file(std::ifstream &inFile);
+    26	void get_products(std::array <std::string, kMaxProducts> &,int &);
+    27	void get_recipe(std::array<std::array<int,kMaxProducts>,kMaxIngredients> &, std::array<float,kMaxIngredients> &, std::ifstream &inFile, int &, int &);
+    28	void flip_array(std::array<std::array<int,kMaxProducts>,kMaxIngredients> , std::array<std::array<int,kMaxProducts>,kMaxIngredients> &,int &, int &);
+    29	void calc_prod_prices(std::array<std::array<int,kMaxProducts>,kMaxIngredients> arrayFlip, std::array<float,kMaxIngredients> priceIngred, std::array<float,kMaxIngredients> &priceOfProd, int &, int &);
+    30	void display_menu(std::array<std::string, kMaxProducts>,std::array<std::array<int,kMaxProducts>,kMaxIngredients>, std::array<float,kMaxIngredients>,int , int);
+    31	
+    32	int main(){
+    33	
+    34	    std::ifstream inFile{};
+    35	    //array to conatin the list of products
+    36	    std::array<std::string, kMaxProducts> products{};
+    37	    //array to grab the ingredient count from the file
+    38	    std::array<std::array<int,kMaxProducts>,kMaxIngredients> recipes{};
+    39	    //array for price of ingredients
+    40	    std::array<float,kMaxIngredients> priceIngred{};
+    41	    //array to contain the proper format for printing out the ingredient count
+    42	    std::array<std::array<int,kMaxProducts>,kMaxIngredients> arrayFlip {};
+    43	    //array that contains the prices for each product
+    44	    std::array<float,kMaxIngredients> priceOfProd{};
+    45	
+    46	    //variables for specific counts throughout the program
+    47	    int countProd{0};
+    48	    int recipesProd{0};
+    49	    int ingredCount{0};
+    50	
+    51	    //run all functions 
+    52	    open_file(inFile);
+    53	    get_products(products,countProd);
+    54	    get_recipe(recipes, priceIngred, inFile, recipesProd, ingredCount);
+    55	    flip_array(recipes, arrayFlip, recipesProd, ingredCount);
+    56	    calc_prod_prices(arrayFlip,priceIngred, priceOfProd, recipesProd, ingredCount);
+    57	    display_menu(products, arrayFlip, priceOfProd, recipesProd, ingredCount);
+    58	
+    59	    //close file
+    60	    inFile.close();
+    61	
+    62	    return 0;
+    63	}
+    64	
+    65	void open_file(std::ifstream &inFile){
+    66	    std::string fileName{};
+    67	
+    68	    std::cout << "Enter the file name: ";
+    69	    std::cin >> fileName;
+    70	
+    71	    inFile.open(fileName);
+    72	
+    73	    while(!inFile){
+    74	        std::cout << "File open error.\n";
+    75	        std::cout << "Enter the file name: ";
+    76	        std::cin >> fileName;
+    77	        inFile.open(fileName);
+    78	    }
+    79	
+    80	    std::cout << "File Open Successfully.\n";
+    81	
+    82	}
+    83	
+    84	void get_products(std::array <std::string, kMaxProducts> &products, int &countProd){
+    85	    std::ifstream product_file{};
+    86	    std::string prodTemp {};
+    87	    product_file.open("products.dat");
+    88	
+    89	    //get the food item name and add it to the list
+    90	    while(std::getline(product_file,prodTemp)){
+    91	        products[countProd] = prodTemp;
+    92	        //set a count 
+    93	        countProd++;
+    94	    }
+    95	}
+    96	
+    97	void get_recipe(std::array<std::array<int,kMaxProducts>,kMaxIngredients> &recipes, std::array<float,kMaxIngredients> &priceIngred, std::ifstream &inFile, int &recipesProd, int &ingredCount){
+    98	    //set a buffer for the rows and cols
+    99	    inFile >> recipesProd;
+   100	    inFile >> ingredCount;
+   101	    float tempPrice {};
+   102	
+   103	    //itterate through the rest of the file and add 
+   104	    //to the 2-d array of ingredients
+   105	    for(int row{0}; row < ingredCount; row++){
+   106	        for(int col{0}; col < recipesProd; col++){
+   107	            inFile >> recipes[row][col];
+   108	        }
+   109	        //pick up the float and add to a seperate array
+   110	        inFile >> tempPrice;
+   111	        priceIngred[row] = tempPrice;
+   112	    }
+   113	}
+   114	
+   115	void flip_array(std::array<std::array<int,kMaxProducts>,kMaxIngredients> recipes, std::array<std::array<int,kMaxProducts>,kMaxIngredients> &arrayFlip,int &recipesProd, int &ingredCount){
+   116	    //flip the cols and rows into a new array
+   117	    for (int row = 0; row < ingredCount; row++) {
+   118	        for (int col = 0; col < recipesProd; col++) {
+   119	            arrayFlip[col][row] = recipes[row][col];
+   120	        }
+   121	    }
+   122	}
+   123	
+   124	void calc_prod_prices(std::array<std::array<int,kMaxProducts>,kMaxIngredients> arrayFlip, std::array<float,kMaxIngredients> priceIngred, std::array<float,kMaxIngredients> &priceOfProd, int &ingredCount, int &recipesProd){
+   125	    //set a temp variable
+   126	    float tempAmount{};
+   127	    
+   128	    //itterate through the array
+   129	    for(int row{0}; row < ingredCount; row++){
+   130	        for(int col{0}; col < recipesProd; col++){
+   131	            //add the amount to the temp variable
+   132	            tempAmount += (arrayFlip[row][col] * priceIngred[col]);
+   133	        }
+   134	        //add the price to a seperate array
+   135	        priceOfProd[row] = tempAmount;
+   136	        //reset the count
+   137	        tempAmount = 0;
+   138	    }
+   139	}
+   140	
+   141	void display_menu(std::array<std::string, kMaxProducts> products,std::array<std::array<int,kMaxProducts>,kMaxIngredients> arrayFlip, std::array<float,kMaxIngredients> priceOfProd,int recipesProd, int ingredCount){
+   142	    int count {1};
+   143	
+   144	    //print the menu
+   145	    std::cout << "**************************************************************************\n" << std::fixed;
+   146	    std::cout << "  Product" << "     Ing1" << "     Ing2" << "    Ing3" << std::setw(3) << "   Ing4" << std::setw(3) << "    Ing5" << std::setw(3) << "    Ing6" << std::setw(3) << "       Price\n"; 
+   147	    std::cout << "--------------------------------------------------------------------------\n";
+   148	    //I struggled with the formating, I did my best though
+   149	    //itterate through the array, print the product first, then row, then price
+   150	    for(int row{0}; row < recipesProd; row++){
+   151	        std::cout << std::setw(1) << count << std::setw(8) << products[row];
+   152	        for(int col{0}; col < ingredCount; col++){
+   153	            std::cout << std::setw(8) << arrayFlip[row][col];
+   154	        }
+   155	        std::cout << std::setprecision(2) <<  "      $" << priceOfProd[row] << '\n';
+   156	        count++;
+   157	    }
+   158	    std::cout << "--------------------------------------------------------------------------\n";
+   159	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ g++ -Wall -Wextra - [KWerror project4.cpp -o project
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ ./project
+[?2004lEnter the file name: recipes.dat
+File Open Successfully.
+**************************************************************************
+  Product     Ing1     Ing2    Ing3   Ing4    Ing5    Ing6       Price
+--------------------------------------------------------------------------
+1   Donut      10      20      50      25       0       0      $718.90
+2   Bagel      10       5      10      25       0       0      $225.15
+3White Bread      11       6      12      30       0       0      $265.04
+4Kaiser Roll      11       6      12      30       0       0      $265.04
+5King Cake       5      50      40      90       0       1      $1085.45
+6Apple Pie       8      15      30      40      20       0      $909.87
+7Cherry Wafer      12      27      25      10       0      15      $1649.68
+--------------------------------------------------------------------------
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ ./project
+[?2004lEnter the file name: sadasda
+File open error.
+Enter the file name: fasdfas
+File open error.
+Enter the file name: recipes2.dat
+File Open Successfully.
+**************************************************************************
+  Product     Ing1     Ing2    Ing3   Ing4    Ing5    Ing6       Price
+--------------------------------------------------------------------------
+1   Donut      10      20      50      25       0       0      $958.90
+2   Bagel      10       6      10      25      10       0      $683.00
+3White Bread      11       6      12      30       0       0      $549.04
+4Kaiser Roll      11       6      12      30       0       0      $549.04
+5King Cake       5      50      40      90       0       1      $1825.45
+6Apple Pie       8      15      30      40      20       0      $1277.07
+7Cherry Wafer      12      27      25      10       0      15      $1777.68
+--------------------------------------------------------------------------
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ ./project
+[?2004lEnter the file name: recipes3.dat
+File Open Successfully.
+**************************************************************************
+  Product     Ing1     Ing2    Ing3   Ing4    Ing5    Ing6       Price
+--------------------------------------------------------------------------
+1   Donut       9      20      50      25       0       0      $823.76
+2   Bagel      10       5      10      25       0       0      $252.15
+3White Bread      11       6      10      30       0       0      $280.04
+4Kaiser Roll      11       6      12      30       0       0      $297.44
+5King Cake       5      50      40      90       4       1      $1423.45
+6Apple Pie       8      15      30      40      20       0      $990.87
+7Cherry Wafer      12      27      25      10       0      15      $1789.68
+--------------------------------------------------------------------------
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Projects/Project_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Projects/Project_4[00m$ exit
+[?2004lexit
+
+Script done on 2024-03-19 22:06:17-05:00 [COMMAND_EXIT_CODE="0"]
