@@ -1,0 +1,58 @@
+Script started on 2024-02-02 15:43:58-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="122" LINES="33"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_4
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ ls -la
+[?2004ltotal 36
+drwxr-sr-x 3 jovyan users  4096 Feb  2 15:43 [0m[01;34m.[0m
+drwxr-sr-x 7 jovyan users  4096 Feb  1 13:46 [01;34m..[0m
+-rwxr-xr-x 1 jovyan users 17520 Feb  2 15:43 [01;32mf2c[0m
+-rw-r--r-- 1 jovyan users   484 Feb  2 15:43 ftoc.cpp
+drwxr-sr-x 2 jovyan users  4096 Feb  1 14:18 [01;34m.ipynb_checkpoints[0m
+-rw-r--r-- 1 jovyan users     0 Feb  2 15:43 Sabin_Lab_4.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ cat -n ftc[Koc.cpp
+[?2004l     1	#include <iostream>
+     2	#include <string>
+     3	#include <iomanip>
+     4	
+     5	//Tyler Sabin
+     6	//Section 2170-004
+     7	
+     8	int main(){
+     9	    double fahrenheit{};
+    10	
+    11	    double celsius{};
+    12	
+    13	    std::cout << std::fixed << std::setprecision(3);
+    14	    std::cout << "Enter a temperature in Fahrenheit: ";
+    15	    std::cin >> fahrenheit;
+    16	
+    17	    celsius = (5.0/9.0) * (fahrenheit - 32);
+    18	
+    19	    std::cout << '\n' << std::setw(5) << fahrenheit << std::setw(4) << "F =" << 
+    20	    std::setw(7) << celsius << std::setw(3) <<"C" << std::endl;
+    21	}
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ cat -n ftoc.cpp[9Pls -la[3Ppwdclear./f2cg++ -Wall -Werror -Wextra ftoc.cpp -o f2c
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ g++ -Wall -Werror -Wextra ftoc.cpp -o f2c[26Pcat -n ftoc.cpp[9Pls -la[3Ppwdclear[2Ppwdls -lacat -n ftoc.cppg++ -Wall -Werror -Wextra ftoc.cpp -o f2c[Kg++ -Wall -Werror -Wextra ftoc.cpp -o f2c[26Pcat -n ftoc.cpp[9Pls -la[3Ppwdclear./f2c
+[?2004lEnter a temperature in Fahrenheit: 96
+
+96.000 F = 35.556  C
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ ./f2c
+[?2004lEnter a temperature in Fahrenheit: 98.6
+
+98.600 F = 37.000  C
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ ./f2c
+[?2004lEnter a temperature in Fahrenheit: 0
+
+0.000 F =-17.778  C
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ ./f2c
+[?2004lEnter a temperature in Fahrenheit: -10
+
+-10.000 F =-23.333  C
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ ./f2c
+[?2004lEnter a temperature in Fahrenheit: 100
+
+100.000 F = 37.778  C
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_4[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_4[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-02 15:45:15-06:00 [COMMAND_EXIT_CODE="0"]

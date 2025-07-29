@@ -1,0 +1,74 @@
+Script started on 2024-02-08 15:27:56-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="199" LINES="47"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_6
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ ls-[K -ls
+[?2004ltotal 28
+24 -rwxr-xr-x 1 jovyan users 23864 Feb  8 11:55 [0m[01;32ma.out[0m
+ 4 -rw-r--r-- 1 jovyan users   716 Feb  8 11:55 runlength.cpp
+ 0 -rw-r--r-- 1 jovyan users     0 Feb  8 15:27 Sabin_Lab_6.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ -[Kls -la
+[?2004ltotal 36
+drwxr-sr-x 2 jovyan users  4096 Feb  8 15:27 [0m[01;34m.[0m
+drwxr-sr-x 9 jovyan users  4096 Feb  8 11:15 [01;34m..[0m
+-rwxr-xr-x 1 jovyan users 23864 Feb  8 11:55 [01;32ma.out[0m
+-rw-r--r-- 1 jovyan users   716 Feb  8 11:55 runlength.cpp
+-rw-r--r-- 1 jovyan users     0 Feb  8 15:27 Sabin_Lab_6.log
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ cat -n runlength.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	runlength.cpp
+     4	Section 004
+     5	this program will count the number of the same letter in a row
+     6	*/
+     7	#include <iostream>
+     8	#include <string>
+     9	
+    10	int main(){
+    11	    
+    12	    std::string tempstring{""};
+    13	    int count{1};
+    14	    std::cout << "Enter text to compress: ";
+    15	    std::getline(std::cin, tempstring);
+    16	
+    17	    int len = tempstring.length();
+    18	
+    19	    for(int index = 0; index < len; index++){
+    20	        if(tempstring[index] == ' '){
+    21	            std::cout << ' ';
+    22	            count = 1;
+    23	        } else if(tempstring[index] == tempstring[index+1] && tempstring[index] != ' '){
+    24	            count ++;
+    25	        } else{
+    26	            std::cout << count << tempstring[index];
+    27	            count = 1;
+    28	        }
+    29	    }
+    30	    std::cout << '\n';
+    31	
+    32	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ g++ -Wall -Wextra -Werror runlength.cpp -o rle
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ /rle
+[?2004lbash: /rle: No such file or directory
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ ./rle
+[?2004lEnter text to compress: a
+1a
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ ./rle
+[?2004lEnter text to compress: aaaabbbbcccceee
+4a4b4c3e
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ What is your favorite color?
+[?2004lbash: What: command not found
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ What is your favorite color?./rle[K
+[?2004lEnter text to compress: What is your favorite color?
+1W1h1a1t 1i1s 1y1o1u1r 1f1a1v1o1r1i1t1e 1c1o1l1o1r1?
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ ./rle
+[?2004lEnter text to compress: asdasdaseweeeee
+1a1s1d1a1s1d1a1s1e1w5e
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ ./rle
+[?2004lEnter text to compress: TylerSabin
+1T1y1l1e1r1S1a1b1i1n
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ ./rle
+[?2004lEnter text to compress: Computer Science 2
+1C1o1m1p1u1t1e1r 1S1c1i1e1n1c1e 12
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_6[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_6[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-08 15:30:31-06:00 [COMMAND_EXIT_CODE="0"]

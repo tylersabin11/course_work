@@ -1,0 +1,152 @@
+Script started on 2024-02-23 14:35:18-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="254" LINES="58"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_9
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ls -la
+[?2004ltotal 36
+drwxr-sr-x  3 jovyan users 4096 Feb 23 14:35 [0m[01;34m.[0m
+drwxr-sr-x 13 jovyan users 4096 Feb 22 11:15 [01;34m..[0m
+-rw-r--r--  1 jovyan users 2026 Feb 23 14:33 grader.cpp
+drwxr-sr-x  2 jovyan users 4096 Feb 21 22:20 [01;34m.ipynb_checkpoints[0m
+-rw-r--r--  1 jovyan users    0 Feb 23 14:35 Sabin_Lab_9.log
+-rw-r--r--  1 jovyan users   16 Feb 21 22:23 T0.dat
+-rw-r--r--  1 jovyan users   28 Feb 23 14:34 T1.dat
+-rw-r--r--  1 jovyan users  183 Feb 23 14:34 T2.dat
+-rw-r--r--  1 jovyan users    7 Feb 23 14:34 T4.dat
+-rw-r--r--  1 jovyan users    7 Feb 23 14:34 T5.dat
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ cat -n grader.cpp
+[?2004l     1	#include <iostream>
+     2	#include <fstream>
+     3	#include <iomanip>
+     4	#include <string>
+     5	
+     6	int ProcessFile(std::ifstream &inFile,int &count,int &pointsEarned);
+     7	double CalculateFinalGrade(int tot_points, int max_points);
+     8	char CalculateLetter(int final_grade);
+     9	
+    10	int main(){
+    11	    std::ifstream inFile{};
+    12	    int count {0};
+    13	    double finalGrade{};
+    14	    int pointsEarned{};
+    15	    int maxPoints{};
+    16	    char letterGrade{};
+    17	
+    18	
+    19	
+    20	    maxPoints = ProcessFile(inFile, count, pointsEarned);
+    21	
+    22	    inFile.close();
+    23	
+    24	    finalGrade = CalculateFinalGrade(pointsEarned, maxPoints);
+    25	    letterGrade = CalculateLetter(finalGrade);
+    26	
+    27	    std::cout << std::fixed << std::setprecision(1);
+    28	    std::cout << "Number of Grades:" << std::setw(13) << count << '\n';
+    29	    std::cout << "Total Points Earned:" << std::setw(10) << pointsEarned << '\n';
+    30	    std::cout << "Max Possible Points:" << std::setw(10) << maxPoints << '\n' << '\n';
+    31	    std::cout << "Final Grade:" << std::setw(7) << letterGrade << std::setw(10) << finalGrade << '%' << '\n';
+    32	}
+    33	
+    34	
+    35	int ProcessFile(std::ifstream &inFile,int &count,int &pointsEarned){
+    36	    std::string fileName{};
+    37	    std::cout << "Enter the input file: ";
+    38	    std::cin >> fileName;
+    39	    std::cout << '\n';
+    40	    inFile.open(fileName);
+    41	    int grade{};
+    42	    if(!inFile){
+    43	        std::cout << fileName << " does not exist.";
+    44	        return 0;
+    45	    }
+    46	    while(inFile >> grade){
+    47	        pointsEarned += grade;
+    48	        count++;
+    49	    }
+    50	
+    51	    int maxPoints{100};
+    52	    maxPoints = (maxPoints * count);
+    53	    return maxPoints;
+    54	
+    55	}
+    56	
+    57	double CalculateFinalGrade(int tot_points, int max_points){
+    58	    double finalGrade = (static_cast<double>(tot_points) / max_points) * 100;
+    59	    return finalGrade;
+    60	}
+    61	
+    62	char CalculateLetter(int finalGrade){
+    63	    char letterGrade{};
+    64	    if(finalGrade >= 90){
+    65	        letterGrade = 'A';
+    66	    } else if(finalGrade >= 80){
+    67	        letterGrade = 'B';
+    68	    } else if(finalGrade >= 70){
+    69	        letterGrade = 'C';
+    70	    }else if(finalGrade >= 60){
+    71	        letterGrade = 'D';
+    72	    } else{
+    73	        letterGrade = 'F';
+    74	    }
+    75	    return letterGrade;
+    76	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ g__ [K[K[K[Kg++ -WE[Ka;; [K[K[Kll -Wextra -Werror grader.cpp -og[K grade
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: T0.dat
+
+Number of Grades:            5
+Total Points Earned:       448
+Max Possible Points:       500
+
+Final Grade:      B      89.6%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: T1.dat
+
+Number of Grades:           10
+Total Points Earned:       318
+Max Possible Points:      1000
+
+Final Grade:      F      31.8%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: T2.dat
+
+Number of Grades:           60
+Total Points Earned:      4427
+Max Possible Points:      6000
+
+Final Grade:      C      73.8%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: T4.dat
+
+Number of Grades:            2
+Total Points Earned:       120
+Max Possible Points:       200
+
+Final Grade:      D      60.0%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: T5.dat
+
+Number of Grades:            2
+Total Points Earned:       140
+Max Possible Points:       200
+
+Final Grade:      C      70.0%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: nofile
+
+nofile does not exist.Number of Grades:            0
+Total Points Earned:         0
+Max Possible Points:         0
+
+Final Grade:      F      -nan%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ ./grade
+[?2004lEnter the input file: nope
+
+nope does not exist.Number of Grades:            0
+Total Points Earned:         0
+Max Possible Points:         0
+
+Final Grade:      F      -nan%
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_9[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_9[00m$ exit
+[?2004lexit
+
+Script done on 2024-02-23 14:37:01-06:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,465 @@
+Script started on 2024-04-05 15:32:28-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="308" LINES="65"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_18
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ ls -la
+[?2004ltotal 48
+drwxr-sr-x  3 jovyan users  4096 Apr  5 15:32 [0m[01;34m.[0m
+drwxr-sr-x 19 jovyan users  4096 Apr  4 13:40 [01;34m..[0m
+drwxr-sr-x  2 jovyan users  4096 Apr  4 14:48 [01;34m.ipynb_checkpoints[0m
+-rwxr-xr-x  1 jovyan users 18536 Apr  4 17:04 [01;32mlink[0m
+-rw-r--r--  1 jovyan users  2747 Apr  5 15:32 LinkedListV2.cpp
+-rw-r--r--  1 jovyan users   719 Apr  4 13:41 LinkedListV2.h
+-rw-r--r--  1 jovyan users  1101 Apr  5 15:27 ll_test_V2.cpp
+-rw-r--r--  1 jovyan users     0 Apr  5 15:32 Sabin_Lab_18.log
+-rw-r--r--  1 jovyan users    39 Apr  4 14:47 testfile.dat
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ cat -n LinkedListV2.cpp[K[K[Kh
+[?2004l     1	#ifndef _LINKEDLIST_H
+     2	#define _LINKEDLIST_H
+     3	
+     4	// A structure defining the node.
+     5	struct Node {
+     6	  
+     7	  int data;    // some data
+     8	  Node *next;  // Pointer to another Node
+     9	};
+    10	
+    11	class LinkedList {
+    12	private:
+    13	  Node *head; // pointer to first item in list
+    14	
+    15	public:
+    16	  LinkedList();               // How do I initialize my object?
+    17	  void push_back(int value);  // add elements to the end of our LL
+    18	  void print() const;         // print all elements
+    19	  void push_front(int value); // push to front
+    20	  bool empty() const;         // function to determine if list is empty
+    21	  void remove(int value);     // function to remove a value
+    22	  Node *find(int value);      // function to find a node with a value (nullptr if not found)
+    23	};
+    24	
+    25	#endif[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ cat -n LinkedListV2.cpp
+[?2004l     1	#include "LinkedListV2.h"
+     2	#include <iostream>
+     3	
+     4	// TODO: Implement the functions below.
+     5	LinkedList::LinkedList() {
+     6	    head = nullptr;
+     7	}
+     8	
+     9	void LinkedList::print() const {
+    10	    if(empty()){
+    11	        std::cout << "ERROR: empty list...\n";
+    12	    }else{
+    13	        Node *temp = head;
+    14	        std::cout << "Data:\n";
+    15	        while(temp != nullptr){
+    16	            std::cout << temp->data << '\n';
+    17	            temp = temp->next;
+    18	        }
+    19	    }
+    20	    std::cout << '\n';
+    21	}
+    22	
+    23	void LinkedList::push_front(int value) {
+    24	    Node *newNode = new Node;
+    25	    newNode->data = value;
+    26	    newNode->next = head;
+    27	    head = newNode;
+    28	}
+    29	
+    30	void LinkedList::push_back(int value) {
+    31	    Node *newNode = new Node;
+    32	    newNode->data = value;
+    33	    newNode->next = nullptr;
+    34	    if(head == nullptr){
+    35	        head = newNode;
+    36	    }else{
+    37	        Node *temp = head;
+    38	        while(temp->next != nullptr){
+    39	            temp = temp->next;
+    40	        }
+    41	        temp->next = newNode;
+    42	    }
+    43	}
+    44	
+    45	void LinkedList::remove(int value){
+    46	    //Set the address value to the found variable
+    47	    Node *address = find(value);
+    48	    //If it is null, then the value does not exist
+    49	    if(address == nullptr){
+    50	        std::cout << "ERROR: " << value << " not found, could not remove...\n";
+    51	        return;
+    52	    }else{
+    53	        //Set two temp nodes, one of them should trail
+    54	        Node *cur = head;
+    55	        Node *prev = nullptr;
+    56	        //Loop until the address is the correct one
+    57	        while(cur != address){
+    58	            //Move up both
+    59	            prev = cur;
+    60	            cur = cur->next;
+    61	        }
+    62	        //If it is the first node in the list
+    63	        if(prev == nullptr){
+    64	            //Set head to the 2nd node in the list
+    65	            head = cur->next;
+    66	        }else if(cur->next != nullptr){
+    67	            //If the next address for the node is not a nullptr
+    68	            //Set the prev to what the 'next' of the cur is looking at
+    69	            prev->next = cur->next;
+    70	        }else{
+    71	            //Must be the last node, so the prev should look to a nullptr
+    72	            prev->next = nullptr;
+    73	        }
+    74	        //delete the node
+    75	        delete cur;
+    76	    }
+    77	}
+    78	
+    79	Node *LinkedList::find(int value){
+    80	    //Set variables for a temp node, and data_value
+    81	    Node *temp = head;
+    82	    int data_value{};
+    83	    //Loop until it is a nullptr or we find the correct address of the data value
+    84	    while(temp != nullptr){
+    85	        //Store the data in the temp variable
+    86	        data_value = temp->data;
+    87	        //See if it equals the value inputted
+    88	        if(data_value == value){
+    89	            //Return the address
+    90	            return temp;
+    91	        }
+    92	        //Move to the next node
+    93	        temp = temp->next;
+    94	    }
+    95	    //Since it did not find the value, return null
+    96	    return nullptr;
+    97	}
+    98	
+    99	bool LinkedList::empty() const {
+   100	    return head == nullptr;
+   101	}
+   102	
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ cat -n ll_test_V2.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Lab 18
+     5	In this lab we will continue to work with
+     6	Linked lists and make a find, and remove
+     7	function
+     8	*/
+     9	
+    10	#include "LinkedListV2.h"
+    11	#include <fstream>
+    12	#include <iostream>
+    13	
+    14	int main() {
+    15	  std::string filename;
+    16	  std::cout << "Enter a data file: ";
+    17	  std::cin >> filename;
+    18	  std::ifstream datafile;
+    19	  datafile.open(filename);
+    20	  if (!datafile) {
+    21	    std::cout << "ERROR: " << filename << " could not open...\n";
+    22	    return 0;
+    23	  }
+    24	  std::cout << '\n';
+    25	  LinkedList values;
+    26	  int value;
+    27	  int count{0};
+    28	  values.print();
+    29	  datafile >> value;
+    30	  while (datafile) {
+    31	    values.push_back(value);
+    32	    count++;
+    33	    datafile >> value;
+    34	  }
+    35	  datafile.close();
+    36	  values.print();
+    37	  values.remove(504); // remove the last item
+    38	  values.print();
+    39	  values.remove(667); // remove the first item
+    40	  values.print();
+    41	  values.remove(68); // remove a middle item
+    42	  values.print();
+    43	  values.remove(3);   // remove a non-existant item
+    44	  values.remove(441); // remove the last item
+    45	  values.remove(891); // remove another middle item
+    46	  values.remove(67);  // remove another front item
+    47	  values.print();
+    48	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ g++ -Wall -Wextra -Werror ll_test_V2.cpp LinkedListV2.cpp -o test
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ ./test
+[?2004lEnter a data file: testfile.dat
+
+ERROR: empty list...
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+504
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+891
+778
+228
+162
+441
+
+ERROR: 3 not found, could not remove...
+Data:
+248
+778
+228
+162
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ ./test
+[?2004lEnter a data file: testfile.dat
+
+ERROR: empty list...
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+504
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+891
+778
+228
+162
+441
+
+ERROR: 3 not found, could not remove...
+Data:
+248
+778
+228
+162
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ ./test
+[?2004lEnter a data file: testfile.dat
+
+ERROR: empty list...
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+504
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+891
+778
+228
+162
+441
+
+ERROR: 3 not found, could not remove...
+Data:
+248
+778
+228
+162
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ ./test
+[?2004lEnter a data file: testfile.dat
+
+ERROR: empty list...
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+504
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+891
+778
+228
+162
+441
+
+ERROR: 3 not found, could not remove...
+Data:
+248
+778
+228
+162
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ ./test
+[?2004lEnter a data file: testfile.dat
+
+ERROR: empty list...
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+504
+
+Data:
+667
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+68
+891
+778
+228
+162
+441
+
+Data:
+67
+248
+891
+778
+228
+162
+441
+
+ERROR: 3 not found, could not remove...
+Data:
+248
+778
+228
+162
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_18[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_18[00m$ exit
+[?2004lexit
+
+Script done on 2024-04-05 15:34:13-05:00 [COMMAND_EXIT_CODE="0"]

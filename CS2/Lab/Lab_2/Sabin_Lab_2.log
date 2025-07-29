@@ -1,0 +1,33 @@
+Script started on 2024-01-25 11:46:21-06:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="81" LINES="40"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ pwd
+[?2004l/home/jovyan
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ ls
+[?2004l[0m[01;34mCLA[0m  [01;34mCS1[0m  [01;34mCS2[0m  [01;34mlost+found[0m  [01;34mOLA[0m  Sabin_Lab_2.log  space_battle.txt  [01;34munixstuff[0m
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ ls unixstuff
+[?2004l[0m[01;34mbackups[0m  space_battle.txt
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ ls unixstuff/backups
+[?2004lspace_battle.copy
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ cat Sabin_Answers.txt
+[?2004lcat: Sabin_Answers.txt: No such file or directory
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~[01;32mjovyan@jupyter-tes4j[00m:[01;34m~[00m$ cd SC[K[KCS2/Labs[K/Lab_2
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_2[00m$ cat Sabin_Answers.txt
+[?2004l1. We are using the bash shell
+2. Tab button
+3. Use the cursor key to scroll up and enter
+4. The name of the home directory is jovyan
+5. mkdir backups
+6. ls lists all directories, ls -a lists all directories and hidden files, ls -t lists files and directories, ls -l lists the directories with time stamps
+7. I am unable to see files "Permission Denied"
+8. cd , cd ~
+9. cd 
+10. cd /..
+11. cp space_battle.txt space_battle.bak
+12. mkdir tempstuff, rmdir tempstuff
+13. mv space_battle.bak space_battle.copy
+14. the command ls *file* would list any file that the specific "file" name somewhere in the file name regardless if it is .cpp or .py
+15. the command would list any file containing at least one matched character
+16. "Unicode text, UTF-8 text, with very long lines (598)"
+17. 372 words[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_2[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_2[00m$ exit
+[?2004lexit
+
+Script done on 2024-01-25 11:47:24-06:00 [COMMAND_EXIT_CODE="0"]

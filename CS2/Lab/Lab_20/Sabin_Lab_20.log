@@ -1,0 +1,166 @@
+Script started on 2024-04-17 13:40:49-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="290" LINES="65"]
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ pwd
+[?2004l/home/jovyan/CS2/Lab/Lab_20
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ ls -la
+[?2004ltotal 28
+drwxr-sr-x  3 jovyan users 4096 Apr 17 13:40 [0m[01;34m.[0m
+drwxr-sr-x 21 jovyan users 4096 Apr 16 11:19 [01;34m..[0m
+drwxr-sr-x  2 jovyan users 4096 Apr 16 19:39 [01;34m.ipynb_checkpoints[0m
+-rw-r--r--  1 jovyan users  839 Apr 17 13:40 MyStack.cpp
+-rw-r--r--  1 jovyan users  466 Apr 17 13:33 MyStack.h
+-rw-r--r--  1 jovyan users  731 Apr 16 18:15 reversedfile.dat
+-rw-r--r--  1 jovyan users    0 Apr 17 13:40 Sabin_Lab_20.log
+-rw-r--r--  1 jovyan users 1097 Apr 17 13:39 stack_main.cpp
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ cat -n MyStack.h
+[?2004l     1	#ifndef MYSTACK_H
+     2	#define MYSTACK_H
+     3	
+     4	struct Node{
+     5	    //Structure for a doubly linked list
+     6	    Node *next;
+     7	    Node *prev;
+     8	    char data;
+     9	};
+    10	
+    11	class Stack{
+    12	private:
+    13	    //Top and bottom
+    14	    Node *bottom;
+    15	    Node *m_top;
+    16	
+    17	public:
+    18	    //Constructor
+    19	    Stack();
+    20	    //Push function
+    21	    void push(char value);
+    22	    //Pop function
+    23	    void pop();
+    24	    
+    25	    //Return the top
+    26	    char top();
+    27	    //Check if stack is empty
+    28	    bool empty(){return m_top == nullptr;}
+    29	};
+    30	#endif[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ cat -n MyStacvk[K[Kk.cpp
+[?2004l     1	#include "MyStack.h"
+     2	
+     3	Stack::Stack(){
+     4	    //Set both to a nullptr
+     5	    bottom = nullptr;
+     6	    m_top = nullptr;
+     7	}
+     8	void Stack::push(char value){
+     9	    //Create a new node
+    10	    Node *newNode = new Node;
+    11	    newNode->data = value;
+    12	    newNode->next = nullptr;
+    13	    newNode->prev = nullptr;
+    14	    //Check if empty
+    15	    if(empty()){
+    16	        //If empty, set the top & bottom to the new node
+    17	        m_top = newNode;
+    18	        bottom = newNode;
+    19	        return;
+    20	    }
+    21	    //Push the new node to the front of the list
+    22	    m_top->next = newNode;
+    23	    newNode->prev = m_top;
+    24	    m_top = newNode;
+    25	}
+    26	char Stack::top(){
+    27	    return m_top->data;
+    28	}
+    29	void Stack::pop(){
+    30	    //Check if not empty
+    31	    if(!empty()){
+    32	        //Create a temp and set to the top
+    33	        Node *temp = m_top;
+    34	        m_top = temp->prev;
+    35	        //Delete the temp node
+    36	        delete temp;
+    37	    }
+    38	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ cat -n stack_main.cpp
+[?2004l     1	/*
+     2	Tyler Sabin
+     3	Section 004
+     4	Lab 20
+     5	*/
+     6	
+     7	#include "MyStack.h"
+     8	#include <iostream>
+     9	#include <fstream>
+    10	#include <string>
+    11	
+    12	int main(){
+    13	
+    14	    std::string fileName;
+    15	
+    16	    std::cout << "Enter file to reverse: ";
+    17	    std::cin >> fileName;
+    18	    std::cout << '\n';
+    19	
+    20	    std::ifstream inFile{fileName};
+    21	    if(!inFile){
+    22	        std::cout << "ERROR file: " << fileName << " does not exist.";
+    23	    }
+    24	
+    25	    //Create a stack object
+    26	    Stack stackLL;
+    27	
+    28	    //Temp string
+    29	    std::string temp;
+    30	
+    31	    while(inFile){
+    32	        //Get the line
+    33	        std::getline(inFile,temp);
+    34	        //Itterate over the string for each char
+    35	        for(int character{0}; character < static_cast<int>(temp.length()); character++){
+    36	            //Push the char to the stack
+    37	            stackLL.push(temp[character]);
+    38	        }
+    39	        //While the stack is not empty
+    40	        while(!stackLL.empty()){
+    41	            //Print out the char
+    42	            std::cout << stackLL.top();
+    43	            //Pop the top
+    44	            stackLL.pop();
+    45	        }
+    46	        //Print out new line character
+    47	        std::cout << '\n';
+    48	    }
+    49	
+    50	    inFile.close();
+    51	
+    52	    return 0;
+    53	}[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ [7mg++ -Wall -Wextra -Werror stack_main.cpp MyStack.cpp -o reverse[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cg++ -Wall -Wextra -Werror stack_main.cpp MyStack.cpp -o reverse
+[?2004l[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ ./reverse
+[?2004lEnter file to reverse: reversedfile.dat
+
+"Space Frontier"
+In the year 7777, a daring explorer named Freon the Explorer embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 18.23 generations, Freon the Explorer journeyed through space.
+An urgent plea for help arrived from the Xyzederons, whose homeworld faced destruction in just days.
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+With unyielding resolve, Freon the Explorer encountered a strange potato and unexpected cats, inching closer to the Xyzederons's planet. As Freon the Explorer neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Xyzederons's world from annihilation.
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ ./reverse
+[?2004lEnter file to reverse: reversedfile.dat
+
+"Space Frontier"
+In the year 7777, a daring explorer named Freon the Explorer embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 18.23 generations, Freon the Explorer journeyed through space.
+An urgent plea for help arrived from the Xyzederons, whose homeworld faced destruction in just days.
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+With unyielding resolve, Freon the Explorer encountered a strange potato and unexpected cats, inching closer to the Xyzederons's planet. As Freon the Explorer neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Xyzederons's world from annihilation.
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ ./reverse
+[?2004lEnter file to reverse: reversedfile.dat
+
+"Space Frontier"
+In the year 7777, a daring explorer named Freon the Explorer embarked on a crucial mission. Armed with a mysterious family heirloom passed down for 18.23 generations, Freon the Explorer journeyed through space.
+An urgent plea for help arrived from the Xyzederons, whose homeworld faced destruction in just days.
+In fact, it would be destroyed by Friday at 5:00pm (which is coincidentally when Labs are due)
+With unyielding resolve, Freon the Explorer encountered a strange potato and unexpected cats, inching closer to the Xyzederons's planet. As Freon the Explorer neared their destination, the fate of the galaxy rested on their shoulders, with just a few hours to save the Xyzederons's world from annihilation.
+
+[?2004h(base) ]0;jovyan@jupyter-tes4j: ~/CS2/Lab/Lab_20[01;32mjovyan@jupyter-tes4j[00m:[01;34m~/CS2/Lab/Lab_20[00m$ exit
+[?2004lexit
+
+Script done on 2024-04-17 13:41:42-05:00 [COMMAND_EXIT_CODE="0"]
